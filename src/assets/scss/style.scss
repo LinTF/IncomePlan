@@ -1,0 +1,12 @@
+$black-color: #171717;
+$white-color: #f3f3f3;
+
+body {
+    font-family: "Helvetica", "Arial","LiHei Pro","黑體-繁","微軟正黑體", sans-serif;
+}
+
+footer {
+    background-color: $black-color;
+    text-align: center;
+    color: $white-color;
+}
