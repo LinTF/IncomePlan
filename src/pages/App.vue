@@ -18,15 +18,15 @@
                 <div class="col-md-3">
                     <div id="outlay">
                         <h3>固定支出</h3>
-                        <p class="txt-right">總支出 {{  }}</p>
+                        <p class="txt-right">總支出 {{ outlayTotal }}</p>
                         <hr />
-                        <p>生活費 <input type="text" /></p>
-                        <p>孝親費 <input type="text" /></p>
-                        <p>保險 <input type="text" /></p>
-                        <p>學貸 <input type="text" /></p>
-                        <p>電話費 <input type="text" /></p>
-                        <p>其他花費 <input type="text" /></p>
-                        <p>交通費 <input type="text" /></p>
+                        <p>生活費 <input type="text" v-model="lifeCost" @keyup="outlay" /></p>
+                        <p>孝親費 <input type="text" v-model="familyCost" @keyup="outlay" /></p>
+                        <p>保險 <input type="text" v-model="insuranceCost" @keyup="outlay" /></p>
+                        <p>學貸 <input type="text" v-model="studentLoans" @keyup="outlay" /></p>
+                        <p>電話費 <input type="text" v-model="telephoneCost" @keyup="outlay" /></p>
+                        <p>其他花費 <input type="text" v-model="otherCost" @keyup="outlay" /></p>
+                        <p>交通費 <input type="text" v-model="transportationCost" @keyup="outlay" /></p>
                     </div>
                 </div>
                 <div class="col-md-3">
@@ -54,15 +54,29 @@
         },
         data() {
             return {
+                // 收入
+                incomeTotal: 0,
                 income: 0,
                 laborInsurance: 0,
                 healthInsurance: 0,
-                incomeTotal: 0,
+
+                // 支出
+                outlayTotal: 0,
+                lifeCost: 0,
+                familyCost: 0,
+                insuranceCost: 0,
+                studentLoans: 0,
+                telephoneCost: 0,
+                otherCost: 0,
+                transportationCost: 0,
             }
         },
         computed: {
             total: function () {
                 this.incomeTotal = parseInt(this.income) - parseInt(this.laborInsurance) - parseInt(this.healthInsurance)
+            },
+            outlay: function () {
+                this.outlayTotal = parseInt(this.lifeCost) + parseInt(this.familyCost) + parseInt(this.insuranceCost) + parseInt(this.studentLoans) + parseInt(this.telephoneCost) + parseInt(this.otherCost) + parseInt(this.transportationCost)
             }
         }
     };
