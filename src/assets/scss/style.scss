@@ -21,6 +21,15 @@ body {
     padding: 20px;
 }
 
-h3 {
+h4 {
     text-align: center;
+}
+
+.income-item {
+    margin: 15px 0px;
+
+    .title {
+        display: block;
+        text-align-last: justify;
+    }
 }

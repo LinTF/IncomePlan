@@ -7,33 +7,180 @@
             <div class="row">
                 <div class="col-md-3">
                     <div id="income">
-                        <h3>實際收入</h3>
+                        <h4>實際收入</h4>
                         <p class="txt-right">剩餘 {{ incomeTotal }} </p>
                         <hr />
-                        <p>本薪 <input type="text" v-model="income" @keyup="total" /></p>
-                        <p>勞保 <input type="text" v-model="laborInsurance" @keyup="total" /></p>
-                        <p>健保 <input type="text" v-model="healthInsurance" @keyup="total" /></p>
+                        <div class="income-item">
+                            <div class="row">
+                                <div class="col-4 title">
+                                    <span>本薪</span>
+                                </div>
+                                <div class="col-8">
+                                    <input type="text" v-model="income" @keyup="total" />
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="income-item">
+                            <div class="row">
+                                <div class="col-4 title">
+                                    <span>勞保</span>
+                                </div>
+                                <div class="col-8">
+                                    <input type="text" v-model="laborInsurance" @keyup="total" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="income-item">
+                            <div class="row">
+                                <div class="col-4 title">
+                                    <span>健保</span>
+                                </div>
+                                <div class="col-8">
+                                    <input type="text" v-model="healthInsurance" @keyup="total" />
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="col-md-3">
                     <div id="outlay">
-                        <h3>固定支出</h3>
+                        <h4>固定支出</h4>
                         <p class="txt-right">總支出 {{ outlayTotal }}</p>
                         <hr />
-                        <p>生活費 <input type="text" v-model="lifeCost" @keyup="outlay" /></p>
-                        <p>孝親費 <input type="text" v-model="familyCost" @keyup="outlay" /></p>
-                        <p>保險 <input type="text" v-model="insuranceCost" @keyup="outlay" /></p>
-                        <p>學貸 <input type="text" v-model="studentLoans" @keyup="outlay" /></p>
-                        <p>電話費 <input type="text" v-model="telephoneCost" @keyup="outlay" /></p>
-                        <p>其他花費 <input type="text" v-model="otherCost" @keyup="outlay" /></p>
-                        <p>交通費 <input type="text" v-model="transportationCost" @keyup="outlay" /></p>
+                        <div class="income-item">
+                            <div class="row">
+                                <div class="col-4 title">
+                                    <span>生活費</span>
+                                </div>
+                                <div class="col-8">
+                                    <input type="text" v-model="lifeCost" @keyup="outlay" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="income-item">
+                            <div class="row">
+                                <div class="col-4 title">
+                                    <span>孝親費</span>
+                                </div>
+                                <div class="col-8">
+                                    <input type="text" v-model="familyCost" @keyup="outlay" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="income-item">
+                            <div class="row">
+                                <div class="col-4 title">
+                                    <span>保險</span>
+                                </div>
+                                <div class="col-8">
+                                    <input type="text" v-model="insuranceCost" @keyup="outlay" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="income-item">
+                            <div class="row">
+                                <div class="col-4 title">
+                                    <span>學貸</span>
+                                </div>
+                                <div class="col-8">
+                                    <input type="text" v-model="studentLoans" @keyup="outlay" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="income-item">
+                            <div class="row">
+                                <div class="col-4 title">
+                                    <span>電話費</span>
+                                </div>
+                                <div class="col-8">
+                                    <input type="text" v-model="telephoneCost" @keyup="outlay" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="income-item">
+                            <div class="row">
+                                <div class="col-4 title">
+                                    <span>其他花費</span>
+                                </div>
+                                <div class="col-8">
+                                    <input type="text" v-model="otherCost" @keyup="outlay" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="income-item">
+                            <div class="row">
+                                <div class="col-4 title">
+                                    <span>交通費</span>
+                                </div>
+                                <div class="col-8">
+                                    <input type="text" v-model="transportationCost" @keyup="outlay" />
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="col-md-3">
-                    
-                </div>
-                <div class="col-md-3">
-                    
+                <div class="col-md-6">
+                    <div id="budget">
+                        <h4>預算</h4>
+                        <br />
+                        <hr />
+                        <div class="income-item">
+                            <div class="row">
+                                <div class="col-3 title">
+                                </div>
+                                <div class="col-3">
+                                    <span class="txt-center">目標金額</span>
+                                </div>
+                                <div class="col-3">
+                                    <span class="txt-center">已規劃金額</span>
+                                </div>
+                                <div class="col-3">
+                                    <span class="txt-center">剩餘金額</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="income-item">
+                            <div class="row">
+                                <div class="col-3 title">
+                                    <span>存錢</span>
+                                </div>
+                                <div class="col-9">
+                                    <p>{{ saveMpney }}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="income-item">
+                            <div class="row">
+                                <div class="col-3 title">
+                                    <span>風險</span>
+                                </div>
+                                <div class="col-9">
+                                    <p>{{ risk }}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="income-item">
+                            <div class="row">
+                                <div class="col-3 title">
+                                    <span>住家</span>
+                                </div>
+                                <div class="col-9">
+                                    <p>{{ house }}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="income-item">
+                            <div class="row">
+                                <div class="col-3 title">
+                                    <span>其他</span>
+                                </div>
+                                <div class="col-9">
+                                    <p>{{ otherConsumption }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -69,15 +216,25 @@
                 telephoneCost: 0,
                 otherCost: 0,
                 transportationCost: 0,
+
+                // 預算
+                saveMpney: 0,
+                risk: 0,
+                house: 0,
+                otherConsumption: 0
             }
         },
         computed: {
             total: function () {
                 this.incomeTotal = parseInt(this.income) - parseInt(this.laborInsurance) - parseInt(this.healthInsurance)
+                this.saveMpney = parseInt(this.income) * 0.3
+                this.risk = parseInt(this.income) * 0.1
+                this.house = parseInt(this.income) * 0.25
+                this.otherConsumption = parseInt(this.income) * 0.35
             },
             outlay: function () {
                 this.outlayTotal = parseInt(this.lifeCost) + parseInt(this.familyCost) + parseInt(this.insuranceCost) + parseInt(this.studentLoans) + parseInt(this.telephoneCost) + parseInt(this.otherCost) + parseInt(this.transportationCost)
-            }
+            },
         }
     };
 </script>
