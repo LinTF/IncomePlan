@@ -61,6 +61,13 @@
         computed: {
             total: function () {
                 this.incomeTotal = parseInt(this.income) - parseInt(this.laborInsurance) - parseInt(this.healthInsurance);
+                
+                // 輸入的欄位為空時的判斷，為了不要讓實際收入=NaN
+                if (isNaN(this.incomeTotal)) {
+                    this.incomeTotal = 0
+                }
+                
+                // 拋出實際收入數值
                 this.$emit('incomeTotalKeyup', this.incomeTotal);
             },
         }
