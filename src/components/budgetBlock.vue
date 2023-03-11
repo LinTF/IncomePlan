@@ -25,7 +25,7 @@
                         <span>存錢（30%）</span>
                     </div>
                     <div class="col-9">
-                        <p>{{ saveMoney = incomeTotal * 0.3 }}</p>
+                        <p>{{ saveMoney = incomeTotal * 0.3 }} {{ $emit('saveMoney', saveMoney = incomeTotal * 0.3) }}</p>
                     </div>
                 </div>
             </div>
@@ -83,7 +83,11 @@
                 house: 0,
                 /// 其他
                 otherConsumption: 0,
+                
             }
+        },
+        computed: {
+            
         }
     }
 </script>
