@@ -11,17 +11,20 @@
                 <div class="col-md-3">
                     <outlayBlock />
                 </div>
-                <div class="col-md-6">
-                    <budgetBlock :incomeTotal=income @saveMoney="saveMoneyTotal" />
+                <div class="col-md-3">
+                    <insuranceBlock />
                 </div>
-                <div class="col-md-6">
-                    <planBlock :saveMoney=saveTotal />
+                <div class="col-md-3">
+                    <studentLoanBlock />
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-3">
                     <saveBlock />
                 </div>
-                <div class="col-md-6">
-                    <insuranceBlock />
+                <div class="col-md-5">
+                    <budgetBlock :incomeTotal=income @saveMoney="saveMoneyTotal" />
+                </div>
+                <div class="col-md-4">
+                    <planBlock :saveMoney=saveTotal />
                 </div>
             </div>
         </div>
@@ -40,6 +43,7 @@
     import planBlock from '@/components/planBlock.vue'
     import saveBlock from '@/components/saveBlock.vue'
     import insuranceBlock from '@/components/insuranceBlock.vue'
+    import studentLoanBlock from '@/components/studentLoanBlock.vue'
 
     export default {
         name: 'App',
@@ -50,7 +54,8 @@
             budgetBlock,
             planBlock,
             saveBlock,
-            insuranceBlock
+            insuranceBlock,
+            studentLoanBlock
         },
         data() {
             return {

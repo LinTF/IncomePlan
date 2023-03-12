@@ -1,7 +1,7 @@
 <template>
-    <div id="insurance-item">
-        <h4>保險支出</h4>
-        <p class="txt-right">總金額 {{ insuranceTotal }} </p>
+    <div id="studen-loan">
+        <h4>學貸</h4>
+        <p class="txt-right">總支出 {{ loanTotal }}</p>
         <hr />
         <div>
             <div class="income-item">
@@ -17,20 +17,20 @@
             <div class="income-item">
                 <div class="row">
                     <div class="col-4 title">
-                        <span>壽險</span>
+                        <span>高中</span>
                     </div>
                     <div class="col-8">
-                        <input type="text" v-model="lifeInsurance" @keyup="total" />
+                        <input type="text" v-model="highSchool" @keyup="total" />
                     </div>
                 </div>
             </div>
             <div class="income-item">
                 <div class="row">
                     <div class="col-4 title">
-                        <span>產險</span>
+                        <span>大學</span>
                     </div>
                     <div class="col-8">
-                        <input type="text" v-model="propertyInsurance" @keyup="total" />
+                        <input type="text" v-model="university" @keyup="total" />
                     </div>
                 </div>
             </div>
@@ -40,20 +40,20 @@
 
 <script>
     export default {
-        name: 'Insurance',
+        name: "StudentLoan",
         data() {
             return {
-                insuranceTotal: 0,
-                lifeInsurance: 0,
-                propertyInsurance: 0
+                loanTotal: 0,
+                highSchool: 0,
+                university: 0
             }
         },
         computed: {
             total() {
-                this.insuranceTotal = parseInt(this.lifeInsurance) + parseInt(this.propertyInsurance);
+                this.loanTotal = parseInt(this.highSchool) + parseInt(this.university)
 
-                if (isNaN(this.insuranceTotal)) {
-                    this.insuranceTotal = 0
+                if (isNaN(this.loanTotal)) {
+                    this.loanTotal = 0
                 }
             }
         }

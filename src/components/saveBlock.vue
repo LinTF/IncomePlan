@@ -1,55 +1,55 @@
 <template>
     <div id="save-item">
         <h4>儲蓄/投資</h4>
-        <hr />
         <p class="txt-right">總儲蓄 {{ saveTotal }}</p>
+        <hr />
         <div>
             <div class="income-item">
                 <div class="row">
-                    <div class="col-6">
+                    <div class="col-4">
                         <span class="txt-center">項目</span>
                     </div>
-                    <div class="col-6">
+                    <div class="col-8">
                         <span class="txt-center">金額</span>
                     </div>
                 </div>
             </div>
             <div class="income-item">
                 <div class="row">
-                    <div class="col-3 title">
+                    <div class="col-4 title">
                         <span>保險</span>
                     </div>
-                    <div class="col-9">
+                    <div class="col-8">
                         <input type="text" v-model="saveInsurance" @keyup="saveAll" />
                     </div>
                 </div>
             </div>
             <div class="income-item">
                 <div class="row">
-                    <div class="col-3 title">
+                    <div class="col-4 title">
                         <span>儲蓄險</span>
                     </div>
-                    <div class="col-9">
+                    <div class="col-8">
                         <input type="text" v-model="savings" @keyup="saveAll" />
                     </div>
                 </div>
             </div>
             <div class="income-item">
                 <div class="row">
-                    <div class="col-3 title">
+                    <div class="col-4 title">
                         <span>基金</span>
                     </div>
-                    <div class="col-9">
+                    <div class="col-8">
                         <input type="text" v-model="foundation" @keyup="saveAll" />
                     </div>
                 </div>
             </div>
             <div class="income-item">
                 <div class="row">
-                    <div class="col-3 title">
+                    <div class="col-4 title">
                         <span>活儲</span>
                     </div>
-                    <div class="col-9">
+                    <div class="col-8">
                         <input type="text" v-model="bankMoney" @keyup="saveAll" />
                     </div>
                 </div>

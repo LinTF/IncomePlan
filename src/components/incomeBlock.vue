@@ -7,6 +7,16 @@
             <div class="income-item">
                 <div class="row">
                     <div class="col-4 title">
+                        <span class="txt-center">項目</span>
+                    </div>
+                    <div class="col-8 title">
+                        <span class="txt-center">金額</span>
+                    </div>
+                </div>
+            </div>
+            <div class="income-item">
+                <div class="row">
+                    <div class="col-4 title">
                         <span>本薪</span>
                     </div>
                     <div class="col-8">

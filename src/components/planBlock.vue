@@ -1,8 +1,8 @@
 <template>
     <div id="save-plan">
         <h4>儲蓄規劃</h4>
-        <hr />
         <p><br /></p>
+        <hr />
         <div>
             <div class="income-item">
                 <div class="row">
