@@ -6,10 +6,10 @@
         <div>
             <div class="income-item">
                 <div class="row">
-                    <div class="col-6 title">
+                    <div class="col-6">
                         <span class="txt-center">項目</span>
                     </div>
-                    <div class="col-6 title">
+                    <div class="col-6">
                         <span class="txt-center">金額</span>
                     </div>
                 </div>

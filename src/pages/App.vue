@@ -20,6 +20,9 @@
                 <div class="col-md-6">
                     <saveBlock />
                 </div>
+                <div class="col-md-6">
+                    <insuranceBlock />
+                </div>
             </div>
         </div>
     </main>
@@ -36,6 +39,7 @@
     import budgetBlock from '@/components/budgetBlock.vue'
     import planBlock from '@/components/planBlock.vue'
     import saveBlock from '@/components/saveBlock.vue'
+    import insuranceBlock from '@/components/insuranceBlock.vue'
 
     export default {
         name: 'App',
@@ -45,7 +49,8 @@
             outlayBlock,
             budgetBlock,
             planBlock,
-            saveBlock
+            saveBlock,
+            insuranceBlock
         },
         data() {
             return {

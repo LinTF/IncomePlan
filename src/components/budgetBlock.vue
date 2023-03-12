@@ -21,7 +21,7 @@
             </div>
             <div class="income-item">
                 <div class="row">
-                    <div class="col-3 title">
+                    <div class="col-3">
                         <span>存錢（30%）</span>
                     </div>
                     <div class="col-9">
@@ -31,7 +31,7 @@
             </div>
             <div class="income-item">
                 <div class="row">
-                    <div class="col-3 title">
+                    <div class="col-3">
                         <span>風險（10%）</span>
                     </div>
                     <div class="col-9">
@@ -41,7 +41,7 @@
             </div>
             <div class="income-item">
                 <div class="row">
-                    <div class="col-3 title">
+                    <div class="col-3">
                         <span>住家（25%）</span>
                     </div>
                     <div class="col-9">
@@ -51,7 +51,7 @@
             </div>
             <div class="income-item">
                 <div class="row">
-                    <div class="col-3 title">
+                    <div class="col-3">
                         <span>其他（35%）</span>
                     </div>
                     <div class="col-9">
