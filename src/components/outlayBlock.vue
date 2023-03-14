@@ -1,7 +1,7 @@
 <template>
     <div id="outlay">
         <h4>固定支出</h4>
-        <p class="txt-right">總支出 {{ outlayTotal }}</p>
+        <p class="txt-right">總支出 {{ outlayTotal + this.insuranceTotal }}</p>
         <hr />
         <div>
             <div class="income-item">
@@ -40,7 +40,7 @@
                         <span>保險</span>
                     </div>
                     <div class="col-8">
-                        <input type="text" v-model="insuranceCost" @keyup="outlay" />
+                        <input type="text" v-model="this.insuranceTotal" disabled="disabled" />
                     </div>
                 </div>
             </div>
@@ -91,6 +91,13 @@
 <script>
     export default {
         name: "outlayBlock",
+        props: {
+            /// 保險
+            insuranceTotal: {
+                type: Number,
+                required: true
+            }
+        },
         data() {
             return {
                 // 支出
@@ -101,7 +108,7 @@
                 /// 孝親費
                 familyCost: 0,
                 /// 保險
-                insuranceCost: 0,
+                // insuranceCost: 0,
                 /// 學貸
                 studentLoans: 0,
                 /// 電話費
@@ -114,11 +121,15 @@
         },
         computed: {
             outlay: function () {
-                this.outlayTotal = parseInt(this.lifeCost) + parseInt(this.familyCost) + parseInt(this.insuranceCost) + parseInt(this.studentLoans) + parseInt(this.telephoneCost) + parseInt(this.otherCost) + parseInt(this.transportationCost)
+                const emptyVal = ''
+                const lifeCost = this.lifeCost === emptyVal ? 0 : this.lifeCost;
+                const familyCost = this.familyCost === emptyVal ? 0 : this.familyCost;
+                const studentLoans = this.studentLoans === emptyVal ? 0 : this.studentLoans;
+                const telephoneCost = this.telephoneCost === emptyVal ? 0 : this.telephoneCost;
+                const otherCost = this.otherCost === emptyVal ? 0 : this.otherCost;
+                const transportationCost = this.transportationCost === emptyVal ? 0 : this.transportationCost;
 
-                if (isNaN(this.outlayTotal)) {
-                    this.outlayTotal = 0
-                }
+                this.outlayTotal = parseInt(lifeCost) + parseInt(familyCost) + parseInt(studentLoans) + parseInt(telephoneCost) + parseInt(otherCost) + parseInt(transportationCost);
             },
         }
     }

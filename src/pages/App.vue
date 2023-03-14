@@ -9,10 +9,10 @@
                     <incomeBlock @incomeTotalKeyup="incomeTotal" />
                 </div>
                 <div class="col-md-3">
-                    <outlayBlock />
+                    <outlayBlock :insuranceTotal=insuranceCost />
                 </div>
                 <div class="col-md-3">
-                    <insuranceBlock />
+                    <insuranceBlock @passInsuranceCost="getInsuranceCost" />
                 </div>
                 <div class="col-md-3">
                     <studentLoanBlock />
@@ -63,6 +63,8 @@
                 income: 0,
                 // 存錢總額（30%）
                 saveTotal: 0,
+                // 保險支出總額
+                insuranceCost: 0
             }
         },
         computed: {
@@ -77,6 +79,10 @@
             // 傳入planBlock > props:saveMoney(總存錢金額)
             saveMoneyTotal(saveMoneyTotal) {
                 this.saveTotal = saveMoneyTotal
+            },
+
+            getInsuranceCost(insuranceCost) {
+                this.insuranceCost = insuranceCost
             }
         }
     };

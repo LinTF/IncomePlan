@@ -1,7 +1,7 @@
 <template>
     <div id="insurance-item">
         <h4>保險支出</h4>
-        <p class="txt-right">總金額 {{ insuranceTotal }} </p>
+        <p class="txt-right">總金額 {{ insuranceTotal }} {{ $emit('passInsuranceCost', insuranceTotal) }} </p>
         <hr />
         <div>
             <div class="income-item">
@@ -20,7 +20,7 @@
                         <span>壽險</span>
                     </div>
                     <div class="col-8">
-                        <input type="text" v-model="lifeInsurance" @keyup="total" />
+                        <input type="number" v-model="lifeInsurance" @keyup="total" min="0" />
                     </div>
                 </div>
             </div>
@@ -30,7 +30,7 @@
                         <span>產險</span>
                     </div>
                     <div class="col-8">
-                        <input type="text" v-model="propertyInsurance" @keyup="total" />
+                        <input type="number" v-model="propertyInsurance" @keyup="total" min="0" />
                     </div>
                 </div>
             </div>
@@ -39,6 +39,8 @@
 </template>
 
 <script>
+import { isEmptyStatement } from '@babel/types'
+
     export default {
         name: 'Insurance',
         data() {
@@ -50,11 +52,11 @@
         },
         computed: {
             total() {
-                this.insuranceTotal = parseInt(this.lifeInsurance) + parseInt(this.propertyInsurance);
+                const emptyVal = '';
+                const lifeInsurance = this.lifeInsurance === emptyVal ? 0 : this.lifeInsurance;
+                const propertyInsurance = this.propertyInsurance === emptyVal ? 0 : this.propertyInsurance;
 
-                if (isNaN(this.insuranceTotal)) {
-                    this.insuranceTotal = 0
-                }
+                this.insuranceTotal = parseInt(lifeInsurance) + parseInt(propertyInsurance);
             }
         }
     }
