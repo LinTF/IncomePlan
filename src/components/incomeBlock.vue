@@ -20,7 +20,7 @@
                         <span>本薪</span>
                     </div>
                     <div class="col-8">
-                        <input type="text" v-model="income" @keyup="total" />
+                        <input type="number" v-model="income" @keyup="total" min="0" />
                     </div>
                 </div>
             </div>
@@ -31,7 +31,7 @@
                         <span>勞保</span>
                     </div>
                     <div class="col-8">
-                        <input type="text" v-model="laborInsurance" @keyup="total" />
+                        <input type="number" v-model="laborInsurance" @keyup="total" min="0" />
                     </div>
                 </div>
             </div>
@@ -41,7 +41,7 @@
                         <span>健保</span>
                     </div>
                     <div class="col-8">
-                        <input type="text" v-model="healthInsurance" @keyup="total" />
+                        <input type="number" v-model="healthInsurance" @keyup="total" min="0" />
                     </div>
                 </div>
             </div>
@@ -70,13 +70,13 @@
         },
         computed: {
             total: function () {
-                this.incomeTotal = parseInt(this.income) - parseInt(this.laborInsurance) - parseInt(this.healthInsurance);
-                
-                // 輸入的欄位為空時的判斷，為了不要讓實際收入=NaN
-                if (isNaN(this.incomeTotal)) {
-                    this.incomeTotal = 0
-                }
-                
+                const emptyVal = '';
+                const income = this.income === emptyVal ? 0 : this.income;
+                const laborInsurance = this.laborInsurance === emptyVal ? 0 : this.laborInsurance;
+                const healthInsurance = this.healthInsurance === emptyVal ? 0 : this.healthInsurance;
+
+                this.incomeTotal = parseInt(income) - parseInt(laborInsurance) - parseInt(healthInsurance);
+
                 // 拋出實際收入數值
                 this.$emit('incomeTotalKeyup', this.incomeTotal);
             },

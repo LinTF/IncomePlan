@@ -20,7 +20,7 @@
                         <span>生活費</span>
                     </div>
                     <div class="col-8">
-                        <input type="text" v-model="lifeCost" @keyup="outlay" />
+                        <input type="number" v-model="lifeCost" @keyup="outlay" min="0" />
                     </div>
                 </div>
             </div>
@@ -30,7 +30,7 @@
                         <span>孝親費</span>
                     </div>
                     <div class="col-8">
-                        <input type="text" v-model="familyCost" @keyup="outlay" />
+                        <input type="number" v-model="familyCost" @keyup="outlay" min="0" />
                     </div>
                 </div>
             </div>
@@ -40,7 +40,7 @@
                         <span>保險</span>
                     </div>
                     <div class="col-8">
-                        <input type="text" v-model="this.insuranceTotal" disabled="disabled" />
+                        <input type="number" v-model="this.insuranceTotal" disabled="disabled" min="0" />
                     </div>
                 </div>
             </div>
@@ -50,7 +50,7 @@
                         <span>學貸</span>
                     </div>
                     <div class="col-8">
-                        <input type="text" v-model="studentLoans" @keyup="outlay" />
+                        <input type="number" v-model="studentLoans" @keyup="outlay" min="0" />
                     </div>
                 </div>
             </div>
@@ -60,7 +60,7 @@
                         <span>電話費</span>
                     </div>
                     <div class="col-8">
-                        <input type="text" v-model="telephoneCost" @keyup="outlay" />
+                        <input type="number" v-model="telephoneCost" @keyup="outlay" min="0" />
                     </div>
                 </div>
             </div>
@@ -70,7 +70,7 @@
                         <span>交通費</span>
                     </div>
                     <div class="col-8">
-                        <input type="text" v-model="transportationCost" @keyup="outlay" />
+                        <input type="number" v-model="transportationCost" @keyup="outlay" min="0" />
                     </div>
                 </div>
             </div>
@@ -80,7 +80,7 @@
                         <span>其他花費</span>
                     </div>
                     <div class="col-8">
-                        <input type="text" v-model="otherCost" @keyup="outlay" />
+                        <input type="number" v-model="otherCost" @keyup="outlay" min="0" />
                     </div>
                 </div>
             </div>
