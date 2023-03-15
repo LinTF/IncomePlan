@@ -1,7 +1,7 @@
 <template>
     <div id="outlay">
         <h4>固定支出</h4>
-        <p class="txt-right">總支出 {{ outlayTotal + this.insuranceTotal }}</p>
+        <p class="txt-right">總支出 {{ outlayTotal + this.insuranceTotal + this.studentLoans }}</p>
         <hr />
         <div>
             <div class="income-item">
@@ -50,7 +50,7 @@
                         <span>學貸</span>
                     </div>
                     <div class="col-8">
-                        <input type="number" v-model="studentLoans" @keyup="outlay" min="0" />
+                        <input type="number" v-model="this.studentLoans" disabled="disabled" min="0" />
                     </div>
                 </div>
             </div>
@@ -96,6 +96,11 @@
             insuranceTotal: {
                 type: Number,
                 required: true
+            },
+            /// 學貸
+            studentLoans: {
+                type: Number,
+                required: true
             }
         },
         data() {
@@ -110,7 +115,7 @@
                 /// 保險
                 // insuranceCost: 0,
                 /// 學貸
-                studentLoans: 0,
+                // studentLoans: 0,
                 /// 電話費
                 telephoneCost: 0,
                 /// 其他花費
@@ -124,12 +129,12 @@
                 const emptyVal = ''
                 const lifeCost = this.lifeCost === emptyVal ? 0 : this.lifeCost;
                 const familyCost = this.familyCost === emptyVal ? 0 : this.familyCost;
-                const studentLoans = this.studentLoans === emptyVal ? 0 : this.studentLoans;
+                // const studentLoans = this.studentLoans === emptyVal ? 0 : this.studentLoans;
                 const telephoneCost = this.telephoneCost === emptyVal ? 0 : this.telephoneCost;
                 const otherCost = this.otherCost === emptyVal ? 0 : this.otherCost;
                 const transportationCost = this.transportationCost === emptyVal ? 0 : this.transportationCost;
 
-                this.outlayTotal = parseInt(lifeCost) + parseInt(familyCost) + parseInt(studentLoans) + parseInt(telephoneCost) + parseInt(otherCost) + parseInt(transportationCost);
+                this.outlayTotal = parseInt(lifeCost) + parseInt(familyCost) + parseInt(telephoneCost) + parseInt(otherCost) + parseInt(transportationCost);
             },
         }
     }

@@ -1,7 +1,7 @@
 <template>
     <div id="studen-loan">
         <h4>學貸</h4>
-        <p class="txt-right">總支出 {{ loanTotal }}</p>
+        <p class="txt-right">總支出 {{ loanTotal }} {{ $emit('passLoanTota', loanTotal) }}</p>
         <hr />
         <div>
             <div class="income-item">
@@ -20,7 +20,7 @@
                         <span>高中</span>
                     </div>
                     <div class="col-8">
-                        <input type="text" v-model="highSchool" @keyup="total" />
+                        <input type="number" v-model="highSchool" @keyup="total" min="0" />
                     </div>
                 </div>
             </div>
@@ -30,7 +30,7 @@
                         <span>大學</span>
                     </div>
                     <div class="col-8">
-                        <input type="text" v-model="university" @keyup="total" />
+                        <input type="number" v-model="university" @keyup="total" min="0" />
                     </div>
                 </div>
             </div>
@@ -50,11 +50,11 @@
         },
         computed: {
             total() {
-                this.loanTotal = parseInt(this.highSchool) + parseInt(this.university)
+                const emptyVal = '';
+                const highSchool = this.highSchool === emptyVal ? 0 : this.highSchool;
+                const university = this.university === emptyVal ? 0 : this.university;
 
-                if (isNaN(this.loanTotal)) {
-                    this.loanTotal = 0
-                }
+                this.loanTotal = parseInt(highSchool) + parseInt(university)
             }
         }
     }

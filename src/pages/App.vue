@@ -9,13 +9,13 @@
                     <incomeBlock @incomeTotalKeyup="incomeTotal" />
                 </div>
                 <div class="col-md-3">
-                    <outlayBlock :insuranceTotal=insuranceCost />
+                    <outlayBlock :insuranceTotal=insuranceCost :studentLoans=loanTota />
                 </div>
                 <div class="col-md-3">
                     <insuranceBlock @passInsuranceCost="getInsuranceCost" />
                 </div>
                 <div class="col-md-3">
-                    <studentLoanBlock />
+                    <studentLoanBlock @passLoanTota="getLoanTotal" />
                 </div>
                 <div class="col-md-3">
                     <saveBlock />
@@ -64,7 +64,9 @@
                 // 存錢總額（30%）
                 saveTotal: 0,
                 // 保險支出總額
-                insuranceCost: 0
+                insuranceCost: 0,
+                // 學貸繳費金額
+                loanTota: 0
             }
         },
         computed: {
@@ -83,6 +85,10 @@
 
             getInsuranceCost(insuranceCost) {
                 this.insuranceCost = insuranceCost
+            },
+
+            getLoanTotal(loanTota) {
+                this.loanTota = loanTota
             }
         }
     };
