@@ -77,6 +77,16 @@
             <div class="income-item">
                 <div class="row">
                     <div class="col-4 title">
+                        <span>房貸(房租)</span>
+                    </div>
+                    <div class="col-8">
+                        <input type="number" v-model="houseCost" @keyup="outlay" min="0" />
+                    </div>
+                </div>
+            </div>
+            <div class="income-item">
+                <div class="row">
+                    <div class="col-4 title">
                         <span>其他花費</span>
                     </div>
                     <div class="col-8">
@@ -118,6 +128,8 @@
                 otherCost: 0,
                 /// 交通費
                 transportationCost: 0,
+                /// 住宿
+                houseCost: 0
             }
         },
         computed: {
@@ -128,8 +140,9 @@
                 const telephoneCost = this.telephoneCost === emptyVal ? 0 : this.telephoneCost;
                 const otherCost = this.otherCost === emptyVal ? 0 : this.otherCost;
                 const transportationCost = this.transportationCost === emptyVal ? 0 : this.transportationCost;
+                const houseCost = this.houseCost === emptyVal ? 0 : this.houseCost;
 
-                this.outlayTotal = parseInt(lifeCost) + parseInt(familyCost) + parseInt(telephoneCost) + parseInt(otherCost) + parseInt(transportationCost);
+                this.outlayTotal = parseInt(lifeCost) + parseInt(familyCost) + parseInt(telephoneCost) + parseInt(houseCost) + parseInt(otherCost) + parseInt(transportationCost);
             },
         }
     }
