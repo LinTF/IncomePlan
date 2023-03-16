@@ -81,6 +81,7 @@
                     </div>
                     <div class="col-8">
                         <input type="number" v-model="houseCost" @keyup="outlay" min="0" />
+                        {{ $emit('passHouseCost', houseCost) }}
                     </div>
                 </div>
             </div>
@@ -94,6 +95,7 @@
                     </div>
                 </div>
             </div>
+            {{ $emit('passOtherPlanCost', otherPlanCost = lifeCost + familyCost + telephoneCost + transportationCost + otherCost + studentLoans) }}
         </div>
     </div>
 </template>
@@ -124,12 +126,14 @@
                 familyCost: 0,
                 /// 電話費
                 telephoneCost: 0,
-                /// 其他花費
-                otherCost: 0,
                 /// 交通費
                 transportationCost: 0,
                 /// 住宿
-                houseCost: 0
+                houseCost: 0,
+                /// 其他花費
+                otherCost: 0,
+                /// 排除存款、保險、住宿，剩餘的費用
+                otherPlanCost: 0
             }
         },
         computed: {

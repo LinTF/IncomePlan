@@ -9,7 +9,7 @@
                     <incomeBlock @incomeTotalKeyup="incomeTotal" />
                 </div>
                 <div class="col-md-3">
-                    <outlayBlock :insuranceTotal=insuranceCost :studentLoans=loanTota />
+                    <outlayBlock @passHouseCost="getHouseCost" @passOtherPlanCost="getOtherPlanCost" :insuranceTotal=insuranceCost :studentLoans=loanTota />
                 </div>
                 <div class="col-md-3">
                     <insuranceBlock @passInsuranceCost="getInsuranceCost" />
@@ -21,7 +21,7 @@
                     <saveBlock @passSavePlanTotal="getSavePlanTotal" />
                 </div>
                 <div class="col-md-5">
-                    <budgetBlock :incomeTotal=income @saveMoney="saveMoneyTotal" :saveTotal="savePlanTotal" :insuranceTotal=insuranceCost />
+                    <budgetBlock :incomeTotal=income @saveMoney="saveMoneyTotal" :saveTotal="savePlanTotal" :insuranceTotal=insuranceCost :house-cost="houseCost" :getOtherPlanCost=otherPlanCost />
                 </div>
                 <div class="col-md-4">
                     <planBlock :saveMoney=saveTotal />
@@ -68,7 +68,11 @@
                 // 學貸繳費金額
                 loanTota: 0,
                 // 存錢計畫總額
-                savePlanTotal: 0
+                savePlanTotal: 0,
+                // 住宿費用
+                houseCost: 0,
+                // 其他花費分配總額
+                otherPlanCost: 0
             }
         },
         computed: {
@@ -77,23 +81,31 @@
         methods: {
             // 傳入budgetBlock > props:incomeTotal(總收入)
             incomeTotal(incomeTotal) {
-                this.income = incomeTotal
+                this.income = incomeTotal;
             },
             // 傳入planBlock > props:saveMoney(總存錢金額)
             saveMoneyTotal(saveMoneyTotal) {
-                this.saveTotal = saveMoneyTotal
+                this.saveTotal = saveMoneyTotal;
             },
             // 傳入outlayBlock > props:insuranceTotal(保險支出總金額)
             getInsuranceCost(insuranceCost) {
-                this.insuranceCost = insuranceCost
+                this.insuranceCost = insuranceCost;
             },
             // 傳入outlayBlock > props:studentLoans(學貸總金額)
             getLoanTotal(loanTota) {
-                this.loanTota = loanTota
+                this.loanTota = loanTota;
             },
             // 傳入budgetBlock > props:saveTotal(存款計劃總金額)
             getSavePlanTotal(savePlanTotal) {
-                this.savePlanTotal = savePlanTotal
+                this.savePlanTotal = savePlanTotal;
+            },
+            // 傳入budgetBlock > props:houseCost(住宿費用)
+            getHouseCost(houseCost) {
+                this.houseCost = houseCost;
+            },
+            // 傳入budgetBlock > props:getOtherPlanCost(其他花費總額)
+            getOtherPlanCost(otherPlanCost) {
+                this.otherPlanCost = otherPlanCost;
             }
         }
     };

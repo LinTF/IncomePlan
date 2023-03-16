@@ -56,8 +56,14 @@
                     <div class="col-3">
                         <span>住家（25%）</span>
                     </div>
-                    <div class="col-9">
+                    <div class="col-3">
                         <p>{{ house = incomeTotal * 0.25 }}</p>
+                    </div>
+                    <div class="col-3">
+                        <p>{{ houseCost }}</p>
+                    </div>
+                    <div class="col-3">
+                        <p>{{ house - houseCost }}</p>
                     </div>
                 </div>
             </div>
@@ -66,8 +72,14 @@
                     <div class="col-3">
                         <span>其他（35%）</span>
                     </div>
-                    <div class="col-9">
+                    <div class="col-3">
                         <p>{{ otherConsumption = incomeTotal * 0.35 }}</p>
+                    </div>
+                    <div class="col-3">
+                        <p>{{ getOtherPlanCost }}</p>
+                    </div>
+                    <div class="col-3">
+                        <p>{{ otherConsumption - getOtherPlanCost }}</p>
                     </div>
                 </div>
             </div>
@@ -88,6 +100,14 @@
                 required: true
             },
             insuranceTotal: {
+                type: Number,
+                required: true
+            },
+            houseCost: {
+                type: Number,
+                required: true
+            },
+            getOtherPlanCost: {
                 type: Number,
                 required: true
             }
