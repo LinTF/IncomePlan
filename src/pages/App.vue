@@ -21,7 +21,7 @@
                     <saveBlock @passSavePlanTotal="getSavePlanTotal" />
                 </div>
                 <div class="col-md-5">
-                    <budgetBlock :incomeTotal=income @saveMoney="saveMoneyTotal" :saveTotal="savePlanTotal" />
+                    <budgetBlock :incomeTotal=income @saveMoney="saveMoneyTotal" :saveTotal="savePlanTotal" :insuranceTotal=insuranceCost />
                 </div>
                 <div class="col-md-4">
                     <planBlock :saveMoney=saveTotal />

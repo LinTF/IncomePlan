@@ -40,8 +40,14 @@
                     <div class="col-3">
                         <span>風險（10%）</span>
                     </div>
-                    <div class="col-9">
+                    <div class="col-3">
                         <p>{{ risk = incomeTotal * 0.1 }}</p>
+                    </div>
+                    <div class="col-3">
+                        <p>{{ insuranceTotal }}</p>
+                    </div>
+                    <div class="col-3">
+                        <p>{{ risk - insuranceTotal }}</p>
                     </div>
                 </div>
             </div>
@@ -78,6 +84,10 @@
                 required: true
             },
             saveTotal: {
+                type: Number,
+                required: true
+            },
+            insuranceTotal: {
                 type: Number,
                 required: true
             }
