@@ -54,6 +54,9 @@
                     </div>
                 </div>
             </div>
+
+            {{ $emit('passSaveBank', saveInsurance + savings + bankMoney) }}
+            {{ $emit('passInvest', foundation) }}
         </div>
     </div>
 </template>
@@ -63,16 +66,16 @@
         name: "SaveItems",
         data() {
             return {
-                // 儲蓄/投資
-                /// 總儲蓄
+                /// 儲蓄/投資
+                // 總儲蓄
                 saveTotal: 0,
-                /// 保險
+                // 保險
                 saveInsurance: 0,
-                /// 儲蓄險
+                // 儲蓄險
                 savings: 0,
-                /// 基金
+                // 基金
                 foundation: 0,
-                /// 活儲
+                // 活儲
                 bankMoney: 0,
             }
         },
