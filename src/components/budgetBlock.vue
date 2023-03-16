@@ -24,8 +24,14 @@
                     <div class="col-3">
                         <span>存錢（30%）</span>
                     </div>
-                    <div class="col-9">
+                    <div class="col-3">
                         <p>{{ saveMoney = incomeTotal * 0.3 }} {{ $emit('saveMoney', saveMoney = incomeTotal * 0.3) }}</p>
+                    </div>
+                    <div class="col-3">
+                        <p>{{ saveTotal }}</p>
+                    </div>
+                    <div class="col-3">
+                        <p>{{ saveMoney - saveTotal }}</p>
                     </div>
                 </div>
             </div>
@@ -69,7 +75,11 @@
         props: {
             incomeTotal: {
                 type: Number,
-                required: true,
+                required: true
+            },
+            saveTotal: {
+                type: Number,
+                required: true
             }
         },
         data() {
@@ -85,9 +95,6 @@
                 otherConsumption: 0,
                 
             }
-        },
-        computed: {
-            
         }
     }
 </script>

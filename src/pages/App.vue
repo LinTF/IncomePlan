@@ -18,10 +18,10 @@
                     <studentLoanBlock @passLoanTota="getLoanTotal" />
                 </div>
                 <div class="col-md-3">
-                    <saveBlock />
+                    <saveBlock @passSavePlanTotal="getSavePlanTotal" />
                 </div>
                 <div class="col-md-5">
-                    <budgetBlock :incomeTotal=income @saveMoney="saveMoneyTotal" />
+                    <budgetBlock :incomeTotal=income @saveMoney="saveMoneyTotal" :saveTotal="savePlanTotal" />
                 </div>
                 <div class="col-md-4">
                     <planBlock :saveMoney=saveTotal />
@@ -66,7 +66,9 @@
                 // 保險支出總額
                 insuranceCost: 0,
                 // 學貸繳費金額
-                loanTota: 0
+                loanTota: 0,
+                // 存錢計畫總額
+                savePlanTotal: 0
             }
         },
         computed: {
@@ -77,18 +79,21 @@
             incomeTotal(incomeTotal) {
                 this.income = incomeTotal
             },
-
             // 傳入planBlock > props:saveMoney(總存錢金額)
             saveMoneyTotal(saveMoneyTotal) {
                 this.saveTotal = saveMoneyTotal
             },
-
+            // 傳入outlayBlock > props:insuranceTotal(保險支出總金額)
             getInsuranceCost(insuranceCost) {
                 this.insuranceCost = insuranceCost
             },
-
+            // 傳入outlayBlock > props:studentLoans(學貸總金額)
             getLoanTotal(loanTota) {
                 this.loanTota = loanTota
+            },
+            // 傳入budgetBlock > props:saveTotal(存款計劃總金額)
+            getSavePlanTotal(savePlanTotal) {
+                this.savePlanTotal = savePlanTotal
             }
         }
     };

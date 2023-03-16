@@ -1,7 +1,7 @@
 <template>
     <div id="save-item">
         <h4>儲蓄/投資</h4>
-        <p class="txt-right">總儲蓄 {{ saveTotal }}</p>
+        <p class="txt-right">總儲蓄 {{ saveTotal }} {{ $emit('passSavePlanTotal', saveTotal) }}</p>
         <hr />
         <div>
             <div class="income-item">
@@ -20,7 +20,7 @@
                         <span>保險</span>
                     </div>
                     <div class="col-8">
-                        <input type="text" v-model="saveInsurance" @keyup="saveAll" />
+                        <input type="number" v-model="saveInsurance" @keyup="saveAll" min="0" />
                     </div>
                 </div>
             </div>
@@ -30,7 +30,7 @@
                         <span>儲蓄險</span>
                     </div>
                     <div class="col-8">
-                        <input type="text" v-model="savings" @keyup="saveAll" />
+                        <input type="number" v-model="savings" @keyup="saveAll" min="0" />
                     </div>
                 </div>
             </div>
@@ -40,7 +40,7 @@
                         <span>基金</span>
                     </div>
                     <div class="col-8">
-                        <input type="text" v-model="foundation" @keyup="saveAll" />
+                        <input type="number" v-model="foundation" @keyup="saveAll" min="0" />
                     </div>
                 </div>
             </div>
@@ -50,7 +50,7 @@
                         <span>活儲</span>
                     </div>
                     <div class="col-8">
-                        <input type="text" v-model="bankMoney" @keyup="saveAll" />
+                        <input type="number" v-model="bankMoney" @keyup="saveAll" min="0" />
                     </div>
                 </div>
             </div>
@@ -78,11 +78,13 @@
         },
         computed: {
             saveAll: function () {
-                this.saveTotal = parseInt(this.saveInsurance) + parseInt(this.savings) + parseInt(this.foundation) + parseInt(this.bankMoney);
+                const empty = '';
+                const saveInsurance = this.saveInsurance === empty ? 0 : this.saveInsurance;
+                const savings = this.savings === empty ? 0 : this.savings;
+                const foundation = this.foundation === empty ? 0 : this.foundation;
+                const bankMoney = this.bankMoney === empty ? 0 : this.bankMoney;
 
-                if (isNaN(this.saveTotal)) {
-                    this.saveTotal = 0
-                }
+                this.saveTotal = parseInt(saveInsurance) + parseInt(savings) + parseInt(foundation) + parseInt(bankMoney);
             }
         },
     }

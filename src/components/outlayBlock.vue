@@ -112,10 +112,6 @@
                 lifeCost: 0,
                 /// 孝親費
                 familyCost: 0,
-                /// 保險
-                // insuranceCost: 0,
-                /// 學貸
-                // studentLoans: 0,
                 /// 電話費
                 telephoneCost: 0,
                 /// 其他花費
@@ -129,7 +125,6 @@
                 const emptyVal = ''
                 const lifeCost = this.lifeCost === emptyVal ? 0 : this.lifeCost;
                 const familyCost = this.familyCost === emptyVal ? 0 : this.familyCost;
-                // const studentLoans = this.studentLoans === emptyVal ? 0 : this.studentLoans;
                 const telephoneCost = this.telephoneCost === emptyVal ? 0 : this.telephoneCost;
                 const otherCost = this.otherCost === emptyVal ? 0 : this.otherCost;
                 const transportationCost = this.transportationCost === emptyVal ? 0 : this.transportationCost;
