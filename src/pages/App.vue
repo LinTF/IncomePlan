@@ -5,25 +5,25 @@
         <h1 class="txt-center">收入支出分析</h1>
         <div class="container">
             <div class="row">
-                <div class="col-md-3">
+                <div class="col-xl-3 col-md-4 col-sm-6">
                     <incomeBlock @incomeTotalKeyup="incomeTotal" />
                 </div>
-                <div class="col-md-3">
+                <div class="col-xl-3 col-md-4 col-sm-6">
                     <outlayBlock @passHouseCost="getHouseCost" @passOtherPlanCost="getOtherPlanCost" :insuranceTotal=insuranceCost :studentLoans=loanTota />
                 </div>
-                <div class="col-md-3">
+                <div class="col-xl-3 col-md-4 col-sm-6">
                     <insuranceBlock @passInsuranceCost="getInsuranceCost" />
                 </div>
-                <div class="col-md-3">
+                <div class="col-xl-3 col-md-6 col-sm-6">
                     <studentLoanBlock @passLoanTota="getLoanTotal" />
                 </div>
-                <div class="col-md-3">
+                <div class="col-xl-3 col-md-6">
                     <saveBlock @passSavePlanTotal="getSavePlanTotal" @passSaveBank="getSaveBank" @passInvest="getInvest" />
                 </div>
-                <div class="col-md-5">
+                <div class="col-xl-5 col-lg-6">
                     <budgetBlock :incomeTotal=income @saveMoney="saveMoneyTotal" :saveTotal="savePlanTotal" :insuranceTotal=insuranceCost :house-cost="houseCost" :getOtherPlanCost=otherPlanCost />
                 </div>
-                <div class="col-md-4">
+                <div class="col-xl-4 col-lg-6">
                     <planBlock :saveMoney=saveTotal :getSaveBank="saveBank" :getInvest="invest" />
                 </div>
             </div>
@@ -126,5 +126,7 @@
 <style scoped lang="scss">
     h1 {
         margin-top: 20px;
+        font-size: 32px;
+        color: #204969;
     }
 </style>

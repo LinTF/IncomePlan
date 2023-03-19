@@ -1,7 +1,7 @@
 <template>
     <div id="income">
         <h4>實際收入</h4>
-        <p class="txt-right">剩餘 {{ incomeTotal }} </p>
+        <p class="txt-right">實領 {{ incomeTotal }} </p>
         <hr />
         <div>
             <div class="income-item">
