@@ -1,7 +1,7 @@
 <template>
     <div id="outlay">
         <h4>固定支出</h4>
-        <p class="txt-right">總支出 {{ outlayTotal + this.insuranceTotal + this.studentLoans }}</p>
+        <p class="txt-right">總支出 {{ numberToMoney(outlayTotal + this.insuranceTotal + this.studentLoans) }}</p>
         <hr />
         <div>
             <div class="income-item">
@@ -101,6 +101,9 @@
 </template>
 
 <script>
+    import { numberToMoney } from '@/js/numberToMoney.js';
+    import { judgeEmptyVal } from '@/js/judgeEmptyVal.js';
+
     export default {
         name: "outlayBlock",
         props: {
@@ -133,18 +136,21 @@
                 /// 其他花費
                 otherCost: 0,
                 /// 排除存款、保險、住宿，剩餘的費用
-                otherPlanCost: 0
+                otherPlanCost: 0,
+
+                // public js
+                numberToMoney,
+                judgeEmptyVal
             }
         },
         computed: {
             outlay: function () {
-                const emptyVal = ''
-                const lifeCost = this.lifeCost === emptyVal ? 0 : this.lifeCost;
-                const familyCost = this.familyCost === emptyVal ? 0 : this.familyCost;
-                const telephoneCost = this.telephoneCost === emptyVal ? 0 : this.telephoneCost;
-                const otherCost = this.otherCost === emptyVal ? 0 : this.otherCost;
-                const transportationCost = this.transportationCost === emptyVal ? 0 : this.transportationCost;
-                const houseCost = this.houseCost === emptyVal ? 0 : this.houseCost;
+                const lifeCost = judgeEmptyVal(this.lifeCost);
+                const familyCost = judgeEmptyVal(this.familyCost);
+                const telephoneCost = judgeEmptyVal(this.telephoneCost);
+                const otherCost = judgeEmptyVal(this.otherCost);
+                const transportationCost = judgeEmptyVal(this.transportationCost);
+                const houseCost = judgeEmptyVal(this.houseCost);
 
                 this.outlayTotal = parseInt(lifeCost) + parseInt(familyCost) + parseInt(telephoneCost) + parseInt(houseCost) + parseInt(otherCost) + parseInt(transportationCost);
             },

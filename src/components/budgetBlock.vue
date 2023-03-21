@@ -123,7 +123,6 @@
                 house: 0,
                 /// 其他
                 otherConsumption: 0,
-                
             }
         }
     }
