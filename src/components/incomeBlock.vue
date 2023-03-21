@@ -1,7 +1,7 @@
 <template>
     <div id="income">
         <h4>實際收入</h4>
-        <p class="txt-right">實領 {{ incomeTotal }} </p>
+        <p class="txt-right">實領 ${{ numberToMoney(incomeTotal) }} </p>
         <hr />
         <div>
             <div class="income-item">
@@ -50,6 +50,8 @@
 </template>
 
 <script>
+    import { numberToMoney } from '@/js/numberToMoney.js';
+
     export default {
         name: 'incomeBlock',
         components: {
@@ -66,6 +68,8 @@
                 laborInsurance: 0,
                 /// 健保
                 healthInsurance: 0,
+
+                numberToMoney
             }
         },
         computed: {
