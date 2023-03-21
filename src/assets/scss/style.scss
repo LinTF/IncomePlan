@@ -41,3 +41,7 @@ input {
 h4 {
     color: #dd7777;
 }
+
+input[type="number"] {
+    text-align: right;
+}

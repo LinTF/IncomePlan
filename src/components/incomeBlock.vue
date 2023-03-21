@@ -51,6 +51,7 @@
 
 <script>
     import { numberToMoney } from '@/js/numberToMoney.js';
+    import { judgeEmptyVal } from '@/js/judgeEmptyVal.js';
 
     export default {
         name: 'incomeBlock',
@@ -69,16 +70,17 @@
                 /// 健保
                 healthInsurance: 0,
 
-                numberToMoney
+                // public js
+                numberToMoney,
+                judgeEmptyVal
             }
         },
         computed: {
             total: function () {
-                const emptyVal = '';
-                const income = this.income === emptyVal ? 0 : this.income;
-                const laborInsurance = this.laborInsurance === emptyVal ? 0 : this.laborInsurance;
-                const healthInsurance = this.healthInsurance === emptyVal ? 0 : this.healthInsurance;
-
+                const income = judgeEmptyVal(this.income);
+                const laborInsurance = judgeEmptyVal(this.laborInsurance);
+                const healthInsurance = judgeEmptyVal(this.healthInsurance);
+                
                 this.incomeTotal = parseInt(income) - parseInt(laborInsurance) - parseInt(healthInsurance);
 
                 // 拋出實際收入數值
