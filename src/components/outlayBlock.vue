@@ -1,7 +1,7 @@
 <template>
     <div id="outlay">
         <h4>固定支出</h4>
-        <p class="txt-right">總支出 {{ numberToMoney(outlayTotal + this.insuranceTotal + this.studentLoans) }}</p>
+        <p class="txt-right">總支出 {{ numberToMoney(outlayTotal + this.propsInsuranceTotal + this.propsStudentLoans) }}</p>
         <hr />
         <div>
             <div class="income-item">
@@ -40,7 +40,7 @@
                         <span>保險</span>
                     </div>
                     <div class="col-8">
-                        <input type="number" v-model="this.insuranceTotal" disabled="disabled" min="0" />
+                        <input type="number" v-model="this.propsInsuranceTotal" disabled="disabled" min="0" />
                     </div>
                 </div>
             </div>
@@ -50,7 +50,7 @@
                         <span>學貸</span>
                     </div>
                     <div class="col-8">
-                        <input type="number" v-model="this.studentLoans" disabled="disabled" min="0" />
+                        <input type="number" v-model="this.propsStudentLoans" disabled="disabled" min="0" />
                     </div>
                 </div>
             </div>
@@ -81,7 +81,7 @@
                     </div>
                     <div class="col-8">
                         <input type="number" v-model="houseCost" @keyup="outlay" min="0" />
-                        {{ $emit('passHouseCost', houseCost) }}
+                        {{ $emit('emitHouseCost', houseCost) }}
                     </div>
                 </div>
             </div>
@@ -95,7 +95,7 @@
                     </div>
                 </div>
             </div>
-            {{ $emit('passOtherPlanCost', otherPlanCost = lifeCost + familyCost + telephoneCost + transportationCost + otherCost + studentLoans) }}
+            {{ $emit('emitOtherPlanCost', otherPlanCost = lifeCost + familyCost + telephoneCost + transportationCost + otherCost + propsStudentLoans) }}
         </div>
     </div>
 </template>
@@ -108,12 +108,12 @@
         name: "outlayBlock",
         props: {
             /// 保險
-            insuranceTotal: {
+            propsInsuranceTotal: {
                 type: Number,
                 required: true
             },
             /// 學貸
-            studentLoans: {
+            propsStudentLoans: {
                 type: Number,
                 required: true
             }

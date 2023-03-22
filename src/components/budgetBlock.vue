@@ -25,7 +25,7 @@
                         <span>存錢（30%）</span>
                     </div>
                     <div class="col-3">
-                        <p>{{ saveMoney = incomeTotal * 0.3 }} {{ $emit('saveMoney', saveMoney = incomeTotal * 0.3) }}</p>
+                        <p>{{ saveMoney = incomeTotal * 0.3 }} {{ $emit('emitSaveMoney', saveMoney = incomeTotal * 0.3) }}</p>
                     </div>
                     <div class="col-3">
                         <p>{{ saveTotal }}</p>
@@ -91,23 +91,23 @@
     export default {
         name: "budgetBlock",
         props: {
-            incomeTotal: {
+            propsIncomeTotal: {
                 type: Number,
                 required: true
             },
-            saveTotal: {
+            propsSaveTotal: {
                 type: Number,
                 required: true
             },
-            insuranceTotal: {
+            propsInsuranceTotal: {
                 type: Number,
                 required: true
             },
-            houseCost: {
+            propsHouseCost: {
                 type: Number,
                 required: true
             },
-            getOtherPlanCost: {
+            propsOtherPlanCost: {
                 type: Number,
                 required: true
             }

@@ -1,7 +1,7 @@
 <template>
     <div id="studen-loan">
         <h4>學貸</h4>
-        <p class="txt-right">總支出 {{ loanTotal }} {{ $emit('passLoanTota', loanTotal) }}</p>
+        <p class="txt-right">總支出 {{ loanTotal }} {{ $emit('emitLoanTota', loanTotal) }}</p>
         <hr />
         <div>
             <div class="income-item">

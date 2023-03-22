@@ -1,7 +1,7 @@
 <template>
     <div id="insurance-item">
         <h4>保險支出</h4>
-        <p class="txt-right">總金額 {{ insuranceTotal }} {{ $emit('passInsuranceCost', insuranceTotal) }} </p>
+        <p class="txt-right">總金額 {{ insuranceTotal }} {{ $emit('emitInsuranceCost', insuranceTotal) }} </p>
         <hr />
         <div>
             <div class="income-item">

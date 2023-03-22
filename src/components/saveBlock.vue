@@ -1,7 +1,7 @@
 <template>
     <div id="save-item">
         <h4>儲蓄/投資</h4>
-        <p class="txt-right">總儲蓄 {{ saveTotal }} {{ $emit('passSavePlanTotal', saveTotal) }}</p>
+        <p class="txt-right">總儲蓄 {{ saveTotal }} {{ $emit('emitSavePlanTotal', saveTotal) }}</p>
         <hr />
         <div>
             <div class="income-item">
@@ -55,8 +55,8 @@
                 </div>
             </div>
 
-            {{ $emit('passSaveBank', saveInsurance + savings + bankMoney) }}
-            {{ $emit('passInvest', foundation) }}
+            {{ $emit('emitSaveBank', saveInsurance + savings + bankMoney) }}
+            {{ $emit('emitInvest', foundation) }}
         </div>
     </div>
 </template>

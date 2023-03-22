@@ -59,15 +59,15 @@
     export default {
         name: 'Plan',
         props: {
-            saveMoney: {
+            propsSaveMoney: {
                 type: Number,
                 required: true
             },
-            getSaveBank: {
+            propsSaveBank: {
                 type: Number,
                 required: true
             },
-            getInvest: {
+            propsInvest: {
                 type: Number,
                 required: true
             }
