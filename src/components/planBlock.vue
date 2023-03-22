@@ -25,13 +25,13 @@
                         <span>儲蓄（50%）</span>
                     </div>
                     <div class="col-3">
-                        <p>{{ saveBank = parseInt(saveMoney) * 0.5 }}</p>
+                        <p>{{ saveBank = parseInt(propsSaveMoney) * 0.5 }}</p>
                     </div>
                     <div class="col-3">
-                        <p>{{ getSaveBank }}</p>
+                        <p>{{ propsSaveBank }}</p>
                     </div>
                     <div class="col-3">
-                        <p>{{ saveBank - getSaveBank }}</p>
+                        <p>{{ saveBank - propsSaveBank }}</p>
                     </div>
                 </div>
             </div>
@@ -41,13 +41,13 @@
                         <span>投資（50%）</span>
                     </div>
                     <div class="col-3">
-                        <p>{{ investment = parseInt(saveMoney) * 0.5 }}</p>
+                        <p>{{ investment = parseInt(propsSaveMoney) * 0.5 }}</p>
                     </div>
                     <div class="col-3">
-                        <p>{{ getInvest }}</p>
+                        <p>{{ propsInvest }}</p>
                     </div>
                     <div class="col-3">
-                        <p>{{ investment - getInvest }}</p>
+                        <p>{{ investment - propsInvest }}</p>
                     </div>
                 </div>
             </div>

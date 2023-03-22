@@ -6,15 +6,15 @@
         <div>
             <div class="income-item">
                 <div class="row">
-                    <div class="col-3 title">
+                    <div class="col-3">
                     </div>
-                    <div class="col-3 title">
+                    <div class="col-3">
                         <span class="txt-center">目標金額</span>
                     </div>
-                    <div class="col-3 title">
+                    <div class="col-3">
                         <span class="txt-center">已規劃金額</span>
                     </div>
-                    <div class="col-3 title">
+                    <div class="col-3">
                         <span class="txt-center">剩餘金額</span>
                     </div>
                 </div>
@@ -25,13 +25,13 @@
                         <span>存錢（30%）</span>
                     </div>
                     <div class="col-3">
-                        <p>{{ saveMoney = incomeTotal * 0.3 }} {{ $emit('emitSaveMoney', saveMoney = incomeTotal * 0.3) }}</p>
+                        <p>{{ saveMoney = propsIncomeTotal * 0.3 }} {{ $emit('emitSaveMoney', saveMoney = propsIncomeTotal * 0.3) }}</p>
                     </div>
                     <div class="col-3">
-                        <p>{{ saveTotal }}</p>
+                        <p>{{ propsSaveTotal }}</p>
                     </div>
                     <div class="col-3">
-                        <p>{{ saveMoney - saveTotal }}</p>
+                        <p>{{ saveMoney - propsSaveTotal }}</p>
                     </div>
                 </div>
             </div>
@@ -41,13 +41,13 @@
                         <span>風險（10%）</span>
                     </div>
                     <div class="col-3">
-                        <p>{{ risk = incomeTotal * 0.1 }}</p>
+                        <p>{{ risk = propsIncomeTotal * 0.1 }}</p>
                     </div>
                     <div class="col-3">
-                        <p>{{ insuranceTotal }}</p>
+                        <p>{{ propsInsuranceTotal }}</p>
                     </div>
                     <div class="col-3">
-                        <p>{{ risk - insuranceTotal }}</p>
+                        <p>{{ risk - propsInsuranceTotal }}</p>
                     </div>
                 </div>
             </div>
@@ -57,13 +57,13 @@
                         <span>住家（25%）</span>
                     </div>
                     <div class="col-3">
-                        <p>{{ house = incomeTotal * 0.25 }}</p>
+                        <p>{{ house = propsIncomeTotal * 0.25 }}</p>
                     </div>
                     <div class="col-3">
-                        <p>{{ houseCost }}</p>
+                        <p>{{ propsHouseCost }}</p>
                     </div>
                     <div class="col-3">
-                        <p>{{ house - houseCost }}</p>
+                        <p>{{ house - propsHouseCost }}</p>
                     </div>
                 </div>
             </div>
@@ -73,13 +73,13 @@
                         <span>其他（35%）</span>
                     </div>
                     <div class="col-3">
-                        <p>{{ otherConsumption = incomeTotal * 0.35 }}</p>
+                        <p>{{ otherConsumption = propsIncomeTotal * 0.35 }}</p>
                     </div>
                     <div class="col-3">
-                        <p>{{ getOtherPlanCost }}</p>
+                        <p>{{ propsOtherPlanCost }}</p>
                     </div>
                     <div class="col-3">
-                        <p>{{ otherConsumption - getOtherPlanCost }}</p>
+                        <p>{{ otherConsumption - propsOtherPlanCost }}</p>
                     </div>
                 </div>
             </div>
