@@ -8,14 +8,14 @@
                 <div class="row">
                     <div class="col-3 title">
                     </div>
-                    <div class="col-3">
-                        <span class="txt-center">預估金額</span>
+                    <div class="col-3 txt-center">
+                        <span>預估金額</span>
                     </div>
-                    <div class="col-3">
-                        <span class="txt-center">實際金額</span>
+                    <div class="col-3 txt-center">
+                        <span>實際金額</span>
                     </div>
-                    <div class="col-3">
-                        <span class="txt-center">差距金額</span>
+                    <div class="col-3 txt-center">
+                        <span>差距金額</span>
                     </div>
                 </div>
             </div>
@@ -25,13 +25,13 @@
                         <span>儲蓄（50%）</span>
                     </div>
                     <div class="col-3">
-                        <p>{{ numberToMoney(saveBank = propsSaveMoney * 0.5) }}</p>
+                        <p class="txt-center">${{ numberToMoney(saveBank = propsSaveMoney * 0.5) }}</p>
                     </div>
                     <div class="col-3">
-                        <p>{{ numberToMoney(propsSaveBank) }}</p>
+                        <p class="txt-center">${{ numberToMoney(propsSaveBank) }}</p>
                     </div>
                     <div class="col-3">
-                        <p>{{ numberToMoney(saveBank - propsSaveBank) }}</p>
+                        <p class="txt-center">${{ numberToMoney(saveBank - propsSaveBank) }}</p>
                     </div>
                 </div>
             </div>
@@ -41,13 +41,13 @@
                         <span>投資（50%）</span>
                     </div>
                     <div class="col-3">
-                        <p>{{ numberToMoney(investment = propsSaveMoney * 0.5) }}</p>
+                        <p class="txt-center">${{ numberToMoney(investment = propsSaveMoney * 0.5) }}</p>
                     </div>
                     <div class="col-3">
-                        <p>{{ numberToMoney(propsInvest) }}</p>
+                        <p class="txt-center">${{ numberToMoney(propsInvest) }}</p>
                     </div>
                     <div class="col-3">
-                        <p>{{ numberToMoney(investment - propsInvest) }}</p>
+                        <p class="txt-center">${{ numberToMoney(investment - propsInvest) }}</p>
                     </div>
                 </div>
             </div>

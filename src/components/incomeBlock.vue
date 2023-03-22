@@ -91,6 +91,14 @@
 
 </script>
 
-<style>
+<style scoped lang="scss">
+    #income {
+        background-color: #f4f0e6;
+        padding: 15px;
+        border-radius: 15px;
 
+        &:hover {
+            border-radius: 0px;
+        }
+    }
 </style>
