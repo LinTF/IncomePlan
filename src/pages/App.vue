@@ -76,7 +76,7 @@
                 // 儲蓄
                 saveBank: 0,
                 // 投資
-                invest: 0
+                invest: 0,
             }
         },
         computed: {

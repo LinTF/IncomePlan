@@ -84,7 +84,7 @@
                 this.incomeTotal = parseInt(income) - parseInt(laborInsurance) - parseInt(healthInsurance);
 
                 // 拋出實際收入數值
-                this.$emit('emitIncomeTotal', this.incomeTotal);
+                this.$emit('emitIncomeTotal', parseInt(this.incomeTotal));
             },
         }
     }

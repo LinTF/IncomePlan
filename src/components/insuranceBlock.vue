@@ -1,7 +1,7 @@
 <template>
     <div id="insurance-item">
         <h4>保險支出</h4>
-        <p class="txt-right">總金額 {{ insuranceTotal }} {{ $emit('emitInsuranceCost', insuranceTotal) }} </p>
+        <p class="txt-right">總金額 ${{ numberToMoney(insuranceTotal) }} {{ $emit('emitInsuranceCost', parseInt(insuranceTotal)) }} </p>
         <hr />
         <div>
             <div class="income-item">
@@ -39,7 +39,8 @@
 </template>
 
 <script>
-import { isEmptyStatement } from '@babel/types'
+    import { numberToMoney } from '@/js/numberToMoney.js';
+    import { judgeEmptyVal } from '@/js/judgeEmptyVal.js';
 
     export default {
         name: 'Insurance',
@@ -47,14 +48,17 @@ import { isEmptyStatement } from '@babel/types'
             return {
                 insuranceTotal: 0,
                 lifeInsurance: 0,
-                propertyInsurance: 0
+                propertyInsurance: 0,
+
+                // public js
+                numberToMoney,
+                judgeEmptyVal
             }
         },
         computed: {
             total() {
-                const emptyVal = '';
-                const lifeInsurance = this.lifeInsurance === emptyVal ? 0 : this.lifeInsurance;
-                const propertyInsurance = this.propertyInsurance === emptyVal ? 0 : this.propertyInsurance;
+                const lifeInsurance = judgeEmptyVal(this.lifeInsurance);
+                const propertyInsurance = judgeEmptyVal(this.propertyInsurance);
 
                 this.insuranceTotal = parseInt(lifeInsurance) + parseInt(propertyInsurance);
             }

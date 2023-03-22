@@ -1,7 +1,7 @@
 <template>
     <div id="outlay">
         <h4>固定支出</h4>
-        <p class="txt-right">總支出 {{ numberToMoney(outlayTotal + this.propsInsuranceTotal + this.propsStudentLoans) }}</p>
+        <p class="txt-right">總支出 ${{ numberToMoney(outlayTotal + this.propsInsuranceTotal + this.propsStudentLoans) }}</p>
         <hr />
         <div>
             <div class="income-item">
@@ -81,7 +81,7 @@
                     </div>
                     <div class="col-8">
                         <input type="number" v-model="houseCost" @keyup="outlay" min="0" />
-                        {{ $emit('emitHouseCost', houseCost) }}
+                        {{ $emit('emitHouseCost', parseInt(judgeEmptyVal(houseCost))) }}
                     </div>
                 </div>
             </div>
@@ -95,7 +95,7 @@
                     </div>
                 </div>
             </div>
-            {{ $emit('emitOtherPlanCost', otherPlanCost = lifeCost + familyCost + telephoneCost + transportationCost + otherCost + propsStudentLoans) }}
+            {{ $emit('emitOtherPlanCost', otherPlanCost = parseInt(judgeEmptyVal(lifeCost)) + parseInt(judgeEmptyVal(familyCost)) + parseInt(judgeEmptyVal(telephoneCost)) + parseInt(judgeEmptyVal(transportationCost)) + parseInt(judgeEmptyVal(otherCost)) + parseInt(judgeEmptyVal(propsStudentLoans))) }}
         </div>
     </div>
 </template>
@@ -144,7 +144,7 @@
             }
         },
         computed: {
-            outlay: function () {
+            outlay() {
                 const lifeCost = judgeEmptyVal(this.lifeCost);
                 const familyCost = judgeEmptyVal(this.familyCost);
                 const telephoneCost = judgeEmptyVal(this.telephoneCost);

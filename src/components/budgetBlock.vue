@@ -25,13 +25,16 @@
                         <span>存錢（30%）</span>
                     </div>
                     <div class="col-3">
-                        <p>{{ saveMoney = propsIncomeTotal * 0.3 }} {{ $emit('emitSaveMoney', saveMoney = propsIncomeTotal * 0.3) }}</p>
+                        <p>
+                            {{ $emit('emitSaveMoney', saveMoney = propsIncomeTotal * 0.3) }}
+                            {{ numberToMoney(saveMoney) }} 
+                        </p>
                     </div>
                     <div class="col-3">
-                        <p>{{ propsSaveTotal }}</p>
+                        <p>{{ numberToMoney(propsSaveTotal) }}</p>
                     </div>
                     <div class="col-3">
-                        <p>{{ saveMoney - propsSaveTotal }}</p>
+                        <p>{{ numberToMoney(saveMoney - propsSaveTotal) }}</p>
                     </div>
                 </div>
             </div>
@@ -41,13 +44,13 @@
                         <span>風險（10%）</span>
                     </div>
                     <div class="col-3">
-                        <p>{{ risk = propsIncomeTotal * 0.1 }}</p>
+                        <p>{{ numberToMoney(risk = propsIncomeTotal * 0.1) }}</p>
                     </div>
                     <div class="col-3">
-                        <p>{{ propsInsuranceTotal }}</p>
+                        <p>{{ numberToMoney(propsInsuranceTotal) }}</p>
                     </div>
                     <div class="col-3">
-                        <p>{{ risk - propsInsuranceTotal }}</p>
+                        <p>{{ numberToMoney(risk - propsInsuranceTotal) }}</p>
                     </div>
                 </div>
             </div>
@@ -57,13 +60,13 @@
                         <span>住家（25%）</span>
                     </div>
                     <div class="col-3">
-                        <p>{{ house = propsIncomeTotal * 0.25 }}</p>
+                        <p>{{ numberToMoney(house = propsIncomeTotal * 0.25) }}</p>
                     </div>
                     <div class="col-3">
-                        <p>{{ propsHouseCost }}</p>
+                        <p>{{ numberToMoney(propsHouseCost) }}</p>
                     </div>
                     <div class="col-3">
-                        <p>{{ house - propsHouseCost }}</p>
+                        <p>{{ numberToMoney(house - propsHouseCost) }}</p>
                     </div>
                 </div>
             </div>
@@ -73,13 +76,13 @@
                         <span>其他（35%）</span>
                     </div>
                     <div class="col-3">
-                        <p>{{ otherConsumption = propsIncomeTotal * 0.35 }}</p>
+                        <p>{{ numberToMoney(otherConsumption = propsIncomeTotal * 0.35) }}</p>
                     </div>
                     <div class="col-3">
-                        <p>{{ propsOtherPlanCost }}</p>
+                        <p>{{ numberToMoney(propsOtherPlanCost) }}</p>
                     </div>
                     <div class="col-3">
-                        <p>{{ otherConsumption - propsOtherPlanCost }}</p>
+                        <p>{{ numberToMoney(otherConsumption - propsOtherPlanCost) }}</p>
                     </div>
                 </div>
             </div>
@@ -88,6 +91,8 @@
 </template>
 
 <script>
+    import { numberToMoney } from '@/js/numberToMoney.js';
+
     export default {
         name: "budgetBlock",
         props: {
@@ -123,6 +128,9 @@
                 house: 0,
                 /// 其他
                 otherConsumption: 0,
+
+                // public js
+                numberToMoney,
             }
         }
     }

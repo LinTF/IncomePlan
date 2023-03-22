@@ -1,7 +1,7 @@
 <template>
     <div id="studen-loan">
         <h4>學貸</h4>
-        <p class="txt-right">總支出 {{ loanTotal }} {{ $emit('emitLoanTota', loanTotal) }}</p>
+        <p class="txt-right">總支出 ${{ numberToMoney(loanTotal) }} {{ $emit('emitLoanTota', loanTotal) }}</p>
         <hr />
         <div>
             <div class="income-item">
@@ -39,20 +39,26 @@
 </template>
 
 <script>
+    import { numberToMoney } from '@/js/numberToMoney.js';
+    import { judgeEmptyVal } from '@/js/judgeEmptyVal.js';
+
     export default {
         name: "StudentLoan",
         data() {
             return {
                 loanTotal: 0,
                 highSchool: 0,
-                university: 0
+                university: 0,
+
+                // public js
+                numberToMoney,
+                judgeEmptyVal
             }
         },
         computed: {
             total() {
-                const emptyVal = '';
-                const highSchool = this.highSchool === emptyVal ? 0 : this.highSchool;
-                const university = this.university === emptyVal ? 0 : this.university;
+                const highSchool = judgeEmptyVal(this.highSchool);
+                const university = judgeEmptyVal(this.university);
 
                 this.loanTotal = parseInt(highSchool) + parseInt(university)
             }

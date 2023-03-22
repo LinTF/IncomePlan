@@ -1,7 +1,7 @@
 <template>
     <div id="save-item">
         <h4>儲蓄/投資</h4>
-        <p class="txt-right">總儲蓄 {{ saveTotal }} {{ $emit('emitSavePlanTotal', saveTotal) }}</p>
+        <p class="txt-right">總儲蓄 ${{ numberToMoney(saveTotal) }} {{ $emit('emitSavePlanTotal', saveTotal) }}</p>
         <hr />
         <div>
             <div class="income-item">
@@ -55,13 +55,16 @@
                 </div>
             </div>
 
-            {{ $emit('emitSaveBank', saveInsurance + savings + bankMoney) }}
-            {{ $emit('emitInvest', foundation) }}
+            {{ $emit('emitSaveBank', parseInt(judgeEmptyVal(saveInsurance)) + parseInt(judgeEmptyVal(savings)) + parseInt(judgeEmptyVal(bankMoney))) }}
+            {{ $emit('emitInvest', parseInt(judgeEmptyVal(foundation))) }}
         </div>
     </div>
 </template>
 
 <script>
+    import { numberToMoney } from '@/js/numberToMoney.js';
+    import { judgeEmptyVal } from '@/js/judgeEmptyVal.js';
+
     export default {
         name: "SaveItems",
         data() {
@@ -77,15 +80,18 @@
                 foundation: 0,
                 // 活儲
                 bankMoney: 0,
+
+                // public js
+                numberToMoney,
+                judgeEmptyVal
             }
         },
         computed: {
             saveAll: function () {
-                const empty = '';
-                const saveInsurance = this.saveInsurance === empty ? 0 : this.saveInsurance;
-                const savings = this.savings === empty ? 0 : this.savings;
-                const foundation = this.foundation === empty ? 0 : this.foundation;
-                const bankMoney = this.bankMoney === empty ? 0 : this.bankMoney;
+                const saveInsurance = judgeEmptyVal(this.saveInsurance);
+                const savings = judgeEmptyVal(this.savings);
+                const foundation = judgeEmptyVal(this.foundation);
+                const bankMoney = judgeEmptyVal(this.bankMoney);
 
                 this.saveTotal = parseInt(saveInsurance) + parseInt(savings) + parseInt(foundation) + parseInt(bankMoney);
             }

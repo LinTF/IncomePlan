@@ -25,13 +25,13 @@
                         <span>儲蓄（50%）</span>
                     </div>
                     <div class="col-3">
-                        <p>{{ saveBank = parseInt(propsSaveMoney) * 0.5 }}</p>
+                        <p>{{ numberToMoney(saveBank = propsSaveMoney * 0.5) }}</p>
                     </div>
                     <div class="col-3">
-                        <p>{{ propsSaveBank }}</p>
+                        <p>{{ numberToMoney(propsSaveBank) }}</p>
                     </div>
                     <div class="col-3">
-                        <p>{{ saveBank - propsSaveBank }}</p>
+                        <p>{{ numberToMoney(saveBank - propsSaveBank) }}</p>
                     </div>
                 </div>
             </div>
@@ -41,13 +41,13 @@
                         <span>投資（50%）</span>
                     </div>
                     <div class="col-3">
-                        <p>{{ investment = parseInt(propsSaveMoney) * 0.5 }}</p>
+                        <p>{{ numberToMoney(investment = propsSaveMoney * 0.5) }}</p>
                     </div>
                     <div class="col-3">
-                        <p>{{ propsInvest }}</p>
+                        <p>{{ numberToMoney(propsInvest) }}</p>
                     </div>
                     <div class="col-3">
-                        <p>{{ investment - propsInvest }}</p>
+                        <p>{{ numberToMoney(investment - propsInvest) }}</p>
                     </div>
                 </div>
             </div>
@@ -56,6 +56,8 @@
 </template>
 
 <script>
+    import { numberToMoney } from '@/js/numberToMoney.js';
+
     export default {
         name: 'Plan',
         props: {
@@ -79,6 +81,9 @@
                 saveBank: 0,
                 /// 投資
                 investment: 0,
+
+                // public js
+                numberToMoney,
             }
         }
     }
