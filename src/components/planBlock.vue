@@ -1,7 +1,7 @@
 <template>
     <div id="save-plan" class="bag-block">
         <h4>儲蓄規劃</h4>
-        <p class="txt-center">使用存錢的規劃金額，各百分之五十做分配</p>
+        <p class="txt-center">使用存錢的規劃金額，各分配 50%</p>
         <hr />
         <div>
             <div class="income-item">

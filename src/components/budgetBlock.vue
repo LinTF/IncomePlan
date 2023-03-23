@@ -1,7 +1,7 @@
 <template>
     <div id="budget" class="bag-block">
         <h4>預算</h4>
-        <p class="txt-center">使用本薪收入過分配百分比，勞健保歸入其他花費</p>
+        <p class="txt-center">使用本薪收入做分配百分比，勞健保歸入其他花費</p>
         <hr />
         <div>
             <div class="income-item">

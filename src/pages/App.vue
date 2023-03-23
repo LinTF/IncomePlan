@@ -4,6 +4,14 @@
     <main>
         <h1 class="txt-center">收入支出分析</h1>
         <div class="container">
+            <div class="note-color">
+                <ul>
+                    <li style="background-color: #fbe8e3;">收入</li>
+                    <li style="background-color: #e4efe7;">支出項</li>
+                    <li style="background-color: #f4f0e6;">儲蓄項</li>
+                    <li style="background-color: #F6F6F6;">規劃項</li>
+                </ul>
+            </div>
             <div class="row">
                 <div class="col-xl-3 col-md-4 col-sm-6">
                     <div class="cell">
@@ -146,5 +154,20 @@
         margin-top: 20px;
         font-size: 32px;
         color: #204969;
+    }
+
+    .note-color {
+        text-align: center;
+        
+        ul {
+            display: inline-flex;
+
+            li {
+                width: 100px;
+                height: 25px;
+                text-align: center;
+                margin: 10px;
+            }
+        }
     }
 </style>
