@@ -1,7 +1,7 @@
 <template>
     <div id="save-plan" class="bag-block">
         <h4>儲蓄規劃</h4>
-        <p><br /></p>
+        <p class="txt-center">使用存錢的規劃金額，各百分之五十做分配</p>
         <hr />
         <div>
             <div class="income-item">
@@ -22,7 +22,7 @@
             <div class="income-item">
                 <div class="row">
                     <div class="col-3 title">
-                        <span>儲蓄（50%）</span>
+                        <p>儲蓄</p>
                     </div>
                     <div class="col-3">
                         <p class="txt-center">${{ numberToMoney(saveBank = propsSaveMoney * 0.5) }}</p>
@@ -38,7 +38,7 @@
             <div class="income-item">
                 <div class="row">
                     <div class="col-3 title">
-                        <span>投資（50%）</span>
+                        <p>投資</p>
                     </div>
                     <div class="col-3">
                         <p class="txt-center">${{ numberToMoney(investment = propsSaveMoney * 0.5) }}</p>
@@ -92,5 +92,11 @@
 <style scoped lang="scss">
     #save-plan {
         background-color: #F6F6F6;
+    }
+
+    .title {
+        p {
+            margin-bottom: 0px;
+        }
     }
 </style>

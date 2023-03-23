@@ -1,7 +1,7 @@
 <template>
     <div id="budget" class="bag-block">
         <h4>預算</h4>
-        <br />
+        <p class="txt-center">使用本薪收入過分配百分比，勞健保歸入其他花費</p>
         <hr />
         <div>
             <div class="income-item">
@@ -26,7 +26,7 @@
                     </div>
                     <div class="col-3">
                         <p class="txt-center">
-                            {{ $emit('emitSaveMoney', saveMoney = propsIncomeTotal * 0.3) }}
+                            {{ $emit('emitSaveMoney', saveMoney = propsIncome * 0.3) }}
                             ${{ numberToMoney(saveMoney) }} 
                         </p>
                     </div>
@@ -44,7 +44,7 @@
                         <span>風險（10%）</span>
                     </div>
                     <div class="col-3">
-                        <p class="txt-center">${{ numberToMoney(risk = propsIncomeTotal * 0.1) }}</p>
+                        <p class="txt-center">${{ numberToMoney(risk = propsIncome * 0.1) }}</p>
                     </div>
                     <div class="col-3">
                         <p class="txt-center">${{ numberToMoney(propsInsuranceTotal) }}</p>
@@ -60,7 +60,7 @@
                         <span>住家（25%）</span>
                     </div>
                     <div class="col-3">
-                        <p class="txt-center">${{ numberToMoney(house = propsIncomeTotal * 0.25) }}</p>
+                        <p class="txt-center">${{ numberToMoney(house = propsIncome * 0.25) }}</p>
                     </div>
                     <div class="col-3">
                         <p class="txt-center">${{ numberToMoney(propsHouseCost) }}</p>
@@ -76,13 +76,13 @@
                         <span>其他（35%）</span>
                     </div>
                     <div class="col-3">
-                        <p class="txt-center">${{ numberToMoney(otherConsumption = propsIncomeTotal * 0.35) }}</p>
+                        <p class="txt-center">${{ numberToMoney(otherConsumption = propsIncome * 0.35) }}</p>
                     </div>
                     <div class="col-3">
-                        <p class="txt-center">${{ numberToMoney(propsOtherPlanCost) }}</p>
+                        <p class="txt-center">${{ numberToMoney(propsOtherPlanCost + propsGovInsuranceTotal) }}</p>
                     </div>
                     <div class="col-3">
-                        <p class="txt-center">${{ numberToMoney(otherConsumption - propsOtherPlanCost) }}</p>
+                        <p class="txt-center">${{ numberToMoney(otherConsumption - propsOtherPlanCost - propsGovInsuranceTotal) }}</p>
                     </div>
                 </div>
             </div>
@@ -113,6 +113,14 @@
                 required: true
             },
             propsOtherPlanCost: {
+                type: Number,
+                required: true
+            },
+            propsIncome: {
+                type: Number,
+                required: true
+            },
+            propsGovInsuranceTotal: {
                 type: Number,
                 required: true
             }

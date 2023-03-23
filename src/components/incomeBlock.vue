@@ -85,6 +85,8 @@
 
                 // 拋出實際收入數值
                 this.$emit('emitIncomeTotal', parseInt(this.incomeTotal));
+                this.$emit('emitIncome', parseInt(income));
+                this.$emit('emitGovInsuranceTotal', parseInt(laborInsurance) + parseInt(healthInsurance));
             },
         }
     }

@@ -7,12 +7,12 @@
             <div class="row">
                 <div class="col-xl-3 col-md-4 col-sm-6">
                     <div class="cell">
-                        <incomeBlock @emitIncomeTotal="getIncomeTotal" />
+                        <incomeBlock @emitIncomeTotal="getIncomeTotal" @emitIncome="getIncome" @emitGovInsuranceTotal="getGovInsuranceTotal" />
                     </div>
                 </div>
                 <div class="col-xl-3 col-md-4 col-sm-6">
                     <div class="cell">
-                        <outlayBlock @emitHouseCost="getHouseCost" @emitOtherPlanCost="getOtherPlanCost" :propsInsuranceTotal=insuranceCost :propsStudentLoans=loanTotal />
+                        <outlayBlock @emitHouseCost="getHouseCost" @emitOtherPlanCost="getOtherPlanCost" :propsInsuranceTotal="insuranceCost" :propsStudentLoans="loanTotal" />
                     </div>
                 </div>
                 <div class="col-xl-3 col-md-4 col-sm-6">
@@ -29,10 +29,10 @@
                     <saveBlock @emitSavePlanTotal="getSavePlanTotal" @emitSaveBank="getSaveBank" @emitInvest="getInvest" />
                 </div>
                 <div class="col-xl-5 col-lg-6">
-                    <budgetBlock  @emitSaveMoney="getSaveMoneyTotal" :propsIncomeTotal=incomeTotal :propsSaveTotal="savePlanTotal" :propsInsuranceTotal=insuranceCost :propsHouseCost="houseCost" :propsOtherPlanCost=otherPlanCost />
+                    <budgetBlock  @emitSaveMoney="getSaveMoneyTotal" :propsIncomeTotal="incomeTotal" :propsSaveTotal="savePlanTotal" :propsInsuranceTotal="insuranceCost" :propsHouseCost="houseCost" :propsOtherPlanCost="otherPlanCost" :propsIncome="income" :propsGovInsuranceTotal="govInsuranceTotal" />
                 </div>
                 <div class="col-xl-4 col-lg-6">
-                    <planBlock :propsSaveMoney=saveTotal :propsSaveBank="saveBank" :propsInvest="invest" />
+                    <planBlock :propsSaveMoney="saveTotal" :propsSaveBank="saveBank" :propsInvest="invest" />
                 </div>
             </div>
         </div>
@@ -85,6 +85,10 @@
                 saveBank: 0,
                 // 投資
                 invest: 0,
+                // 本薪
+                income: 0,
+                // 勞保與健保的組合
+                govInsuranceTotal: 0
             }
         },
         computed: {
@@ -126,6 +130,12 @@
             // 傳入planBlock > props:saveMoney(總存錢金額)
             getSaveMoneyTotal(val) {
                 this.saveTotal = val;
+            },
+            getIncome(val) {
+                this.income = val;
+            },
+            getGovInsuranceTotal(val) {
+                this.govInsuranceTotal = val;
             }
         }
     };
