@@ -1,5 +1,5 @@
 <template>
-    <div id="save-item">
+    <div id="save-item" class="bag-block">
         <h4>儲蓄/投資</h4>
         <p class="txt-right">總儲蓄 ${{ numberToMoney(saveTotal) }} {{ $emit('emitSavePlanTotal', saveTotal) }}</p>
         <hr />
@@ -99,6 +99,8 @@
     }
 </script>
 
-<style>
-
+<style scoped lang="scss">
+    #save-item {
+        background-color: #f4f0e6;
+    }
 </style>

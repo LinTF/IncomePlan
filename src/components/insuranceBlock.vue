@@ -1,5 +1,5 @@
 <template>
-    <div id="insurance-item">
+    <div id="insurance-item" class="bag-block">
         <h4>保險支出</h4>
         <p class="txt-right">總金額 ${{ numberToMoney(insuranceTotal) }} {{ $emit('emitInsuranceCost', parseInt(insuranceTotal)) }} </p>
         <hr />
@@ -66,6 +66,8 @@
     }
 </script>
 
-<style>
-
+<style scoped lang="scss">
+    #insurance-item {
+        background-color: #e4efe7;
+    }
 </style>

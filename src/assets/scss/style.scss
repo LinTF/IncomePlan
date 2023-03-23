@@ -44,4 +44,33 @@ h4 {
 
 input[type="number"] {
     text-align: right;
+    border: 1px solid #ccc;
+    border-radius: 2px;
+    outline: none;
+
+    &:focus {
+        border-color: #d78ab7;
+        background-color: #dd7777;
+        color: #fff;
+    }
 }
+
+.bag-block {
+    padding: 15px;
+    border-radius: 15px;
+    border: 2px solid #fff;
+    margin: 10px 5px;
+
+    &:hover {
+        border: 2px solid #dd7777;
+        transition: .5s;
+    }
+}
+
+// .top-block {
+//     display: table;
+
+//     .cell {
+//         display: table-cell;
+//     }
+// }

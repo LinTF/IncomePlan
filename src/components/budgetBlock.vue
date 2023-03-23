@@ -1,5 +1,5 @@
 <template>
-    <div id="budget">
+    <div id="budget" class="bag-block">
         <h4>預算</h4>
         <br />
         <hr />
@@ -136,6 +136,8 @@
     }
 </script>
 
-<style>
-
+<style scoped lang="scss">
+    #budget {
+        background-color: #F6F6F6;
+    }
 </style>

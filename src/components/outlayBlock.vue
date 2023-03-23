@@ -1,5 +1,5 @@
 <template>
-    <div id="outlay">
+    <div id="outlay" class="bag-block">
         <h4>固定支出</h4>
         <p class="txt-right">總支出 ${{ numberToMoney(outlayTotal + this.propsInsuranceTotal + this.propsStudentLoans) }}</p>
         <hr />
@@ -77,7 +77,7 @@
             <div class="income-item">
                 <div class="row">
                     <div class="col-4 title">
-                        <span>房貸(房租)</span>
+                        <span>房貸</span>
                     </div>
                     <div class="col-8">
                         <input type="number" v-model="houseCost" @keyup="outlay" min="0" />
@@ -158,6 +158,8 @@
     }
 </script>
 
-<style>
-
+<style scoped lang="scss">
+    #outlay {
+        background-color: #e4efe7;
+    }
 </style>

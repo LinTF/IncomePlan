@@ -1,5 +1,5 @@
 <template>
-    <div id="income">
+    <div id="income" class="bag-block">
         <h4>實際收入</h4>
         <p class="txt-right">實領 ${{ numberToMoney(incomeTotal) }} </p>
         <hr />
@@ -93,12 +93,6 @@
 
 <style scoped lang="scss">
     #income {
-        background-color: #f4f0e6;
-        padding: 15px;
-        border-radius: 15px;
-
-        &:hover {
-            border-radius: 0px;
-        }
+        background-color: #fbe8e3;
     }
 </style>

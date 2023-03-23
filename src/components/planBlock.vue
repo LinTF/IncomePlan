@@ -1,5 +1,5 @@
 <template>
-    <div id="save-plan">
+    <div id="save-plan" class="bag-block">
         <h4>儲蓄規劃</h4>
         <p><br /></p>
         <hr />
@@ -89,6 +89,8 @@
     }
 </script>
 
-<style>
-
+<style scoped lang="scss">
+    #save-plan {
+        background-color: #F6F6F6;
+    }
 </style>

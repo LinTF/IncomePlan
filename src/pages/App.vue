@@ -6,16 +6,24 @@
         <div class="container">
             <div class="row">
                 <div class="col-xl-3 col-md-4 col-sm-6">
-                    <incomeBlock @emitIncomeTotal="getIncomeTotal" />
+                    <div class="cell">
+                        <incomeBlock @emitIncomeTotal="getIncomeTotal" />
+                    </div>
                 </div>
                 <div class="col-xl-3 col-md-4 col-sm-6">
-                    <outlayBlock @emitHouseCost="getHouseCost" @emitOtherPlanCost="getOtherPlanCost" :propsInsuranceTotal=insuranceCost :propsStudentLoans=loanTota />
+                    <div class="cell">
+                        <outlayBlock @emitHouseCost="getHouseCost" @emitOtherPlanCost="getOtherPlanCost" :propsInsuranceTotal=insuranceCost :propsStudentLoans=loanTotal />
+                    </div>
                 </div>
                 <div class="col-xl-3 col-md-4 col-sm-6">
-                    <insuranceBlock @emitInsuranceCost="getInsuranceCost" />
+                    <div class="cell">
+                        <insuranceBlock @emitInsuranceCost="getInsuranceCost" />
+                    </div>
                 </div>
                 <div class="col-xl-3 col-md-6 col-sm-6">
-                    <studentLoanBlock @emitLoanTota="getLoanTotal" />
+                    <div class="cell">
+                        <studentLoanBlock @emitLoanTotal="getLoanTotal" />
+                    </div>
                 </div>
                 <div class="col-xl-3 col-md-6">
                     <saveBlock @emitSavePlanTotal="getSavePlanTotal" @emitSaveBank="getSaveBank" @emitInvest="getInvest" />
@@ -66,7 +74,7 @@
                 // 保險支出總額
                 insuranceCost: 0,
                 // 學貸繳費金額
-                loanTota: 0,
+                loanTotal: 0,
                 // 存錢計畫總額
                 savePlanTotal: 0,
                 // 住宿費用
@@ -101,7 +109,7 @@
             },
             // 傳入outlayBlock > props:studentLoans(學貸總金額)
             getLoanTotal(val) {
-                this.loanTota = val;
+                this.loanTotal = val;
             },
             // 傳入budgetBlock > props:saveTotal(存款計劃總金額)
             getSavePlanTotal(val) {
