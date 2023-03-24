@@ -251,4 +251,18 @@
         width: 25px;
         margin-top: -7px;
     }
+
+    ul {
+        padding-left: 0px;
+    }
+
+    @media screen and (max-width:520px) {
+        ul {
+            max-width: 100%;
+
+            li {
+                max-width: 50% !important;
+            }
+        }
+    }
 </style>

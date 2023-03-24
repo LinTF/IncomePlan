@@ -22,7 +22,7 @@
             <div class="income-item">
                 <div class="row">
                     <div class="col-3">
-                        <span class="txt-center">存錢（30%）</span>
+                        <p class="txt-center">存錢（30%）</p>
                     </div>
                     <div class="col-3">
                         <p class="txt-center">
@@ -42,7 +42,7 @@
             <div class="income-item">
                 <div class="row">
                     <div class="col-3">
-                        <span>風險（10%）</span>
+                        <p class="txt-center">風險（10%）</p>
                     </div>
                     <div class="col-3">
                         <p class="txt-center">${{ numberToMoney(risk = propsIncome * 0.1) }}</p>
@@ -59,7 +59,7 @@
             <div class="income-item">
                 <div class="row">
                     <div class="col-3">
-                        <span>住家（25%）</span>
+                        <p class="txt-center">住家（25%）</p>
                     </div>
                     <div class="col-3">
                         <p class="txt-center">${{ numberToMoney(house = propsIncome * 0.25) }}</p>
@@ -76,7 +76,7 @@
             <div class="income-item">
                 <div class="row">
                     <div class="col-3">
-                        <span>其他（35%）</span>
+                        <p class="txt-center">其他（35%）</p>
                     </div>
                     <div class="col-3">
                         <p class="txt-center">${{ numberToMoney(otherConsumption = propsIncome * 0.35) }}</p>
