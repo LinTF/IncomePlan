@@ -56,7 +56,7 @@
 </template>
 
 <script>
-    import { numberToMoney } from '@/js/numberToMoney.js';
+    import { numberToMoney } from '@/assets/js/numberToMoney.js';
 
     export default {
         name: 'Plan',

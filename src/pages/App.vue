@@ -37,18 +37,23 @@
                     <saveBlock @emitSavePlanTotal="getSavePlanTotal" @emitSaveBank="getSaveBank" @emitInvest="getInvest" />
                 </div>
                 <div class="col-xl-5 col-lg-6">
-                    <budgetBlock  @emitSaveMoney="getSaveMoneyTotal" :propsIncomeTotal="incomeTotal" :propsSaveTotal="savePlanTotal" :propsInsuranceTotal="insuranceCost" :propsHouseCost="houseCost" :propsOtherPlanCost="otherPlanCost" :propsIncome="income" :propsGovInsuranceTotal="govInsuranceTotal" />
+                    <budgetBlock  @emitSaveMoney="getSaveMoneyTotal" @emitLastSave="getLastSave" :propsIncomeTotal="incomeTotal" :propsSaveTotal="savePlanTotal" :propsInsuranceTotal="insuranceCost" :propsHouseCost="houseCost" :propsOtherPlanCost="otherPlanCost" :propsIncome="income" :propsGovInsuranceTotal="govInsuranceTotal"  />
                 </div>
                 <div class="col-xl-4 col-lg-6">
                     <planBlock :propsSaveMoney="saveTotal" :propsSaveBank="saveBank" :propsInvest="invest" />
                 </div>
             </div>
+            <p>{{ lastSave }}</p>
         </div>
     </main>
 
     <footer>
         <footerBlock />
     </footer>
+
+    <!-- <a href="https://www.flaticon.com/free-icons/like" title="like icons">Like icons created by Freepik - Flaticon</a>
+    <a href="https://www.flaticon.com/free-icons/diamond" title="diamond icons">Diamond icons created by Freepik - Flaticon</a>
+    <a href="https://www.flaticon.com/free-icons/error" title="error icons">Error icons created by Vectors Market - Flaticon</a> -->
 </template>
 
 <script>
@@ -96,7 +101,9 @@
                 // 本薪
                 income: 0,
                 // 勞保與健保的組合
-                govInsuranceTotal: 0
+                govInsuranceTotal: 0,
+                // 剩餘存款金額
+                lastSave: 0
             }
         },
         computed: {
@@ -144,6 +151,13 @@
             },
             getGovInsuranceTotal(val) {
                 this.govInsuranceTotal = val;
+            },
+            getLastSave(val) {
+                if (val > 0) {
+                    this.lastSave = val;
+                } else {
+                    this.lastSave= 0;
+                }
             }
         }
     };

@@ -34,7 +34,8 @@
                         <p class="txt-center">${{ numberToMoney(propsSaveTotal) }}</p>
                     </div>
                     <div class="col-3">
-                        <p class="txt-center">${{ numberToMoney(saveMoney - propsSaveTotal) }}</p>
+                        <p class="txt-center">${{ lastSave = numberToMoney(saveMoney - propsSaveTotal) }}</p>
+                        {{ $emit('emitLastSave', lastSave) }}
                     </div>
                 </div>
             </div>
@@ -91,7 +92,7 @@
 </template>
 
 <script>
-    import { numberToMoney } from '@/js/numberToMoney.js';
+    import { numberToMoney } from '@/assets/js/numberToMoney';
 
     export default {
         name: "budgetBlock",
@@ -136,6 +137,8 @@
                 house: 0,
                 /// 其他
                 otherConsumption: 0,
+                // 存錢剩餘
+                lastSave: 0,
 
                 // public js
                 numberToMoney,

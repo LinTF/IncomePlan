@@ -50,8 +50,8 @@
 </template>
 
 <script>
-    import { numberToMoney } from '@/js/numberToMoney.js';
-    import { judgeEmptyVal } from '@/js/judgeEmptyVal.js';
+    import { numberToMoney } from '@/assets/js/numberToMoney.js';
+    import { judgeEmptyVal } from '@/assets/js/judgeEmptyVal.js';
 
     export default {
         name: 'incomeBlock',
