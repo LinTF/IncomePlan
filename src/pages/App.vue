@@ -14,36 +14,82 @@
             </div>
             <div class="row">
                 <div class="col-xl-3 col-md-4 col-sm-6">
-                    <div class="cell">
-                        <incomeBlock @emitIncomeTotal="getIncomeTotal" @emitIncome="getIncome" @emitGovInsuranceTotal="getGovInsuranceTotal" />
+                    <div>
+                        <incomeBlock 
+                            @emitIncomeTotal="getIncomeTotal" 
+                            @emitIncome="getIncome" 
+                            @emitGovInsuranceTotal="getGovInsuranceTotal" />
                     </div>
                 </div>
                 <div class="col-xl-3 col-md-4 col-sm-6">
-                    <div class="cell">
-                        <outlayBlock @emitHouseCost="getHouseCost" @emitOtherPlanCost="getOtherPlanCost" :propsInsuranceTotal="insuranceCost" :propsStudentLoans="loanTotal" />
+                    <div>
+                        <outlayBlock 
+                            @emitHouseCost="getHouseCost" 
+                            @emitOtherPlanCost="getOtherPlanCost" 
+                            :propsInsuranceTotal="insuranceCost" 
+                            :propsStudentLoans="loanTotal" />
                     </div>
                 </div>
                 <div class="col-xl-3 col-md-4 col-sm-6">
-                    <div class="cell">
-                        <insuranceBlock @emitInsuranceCost="getInsuranceCost" />
+                    <div>
+                        <insuranceBlock 
+                            @emitInsuranceCost="getInsuranceCost" />
                     </div>
                 </div>
                 <div class="col-xl-3 col-md-6 col-sm-6">
-                    <div class="cell">
-                        <studentLoanBlock @emitLoanTotal="getLoanTotal" />
+                    <div>
+                        <studentLoanBlock 
+                            @emitLoanTotal="getLoanTotal" />
                     </div>
                 </div>
                 <div class="col-xl-3 col-md-6">
-                    <saveBlock @emitSavePlanTotal="getSavePlanTotal" @emitSaveBank="getSaveBank" @emitInvest="getInvest" />
+                    <saveBlock 
+                        @emitSavePlanTotal="getSavePlanTotal" 
+                        @emitSaveBank="getSaveBank" 
+                        @emitInvest="getInvest" />
                 </div>
                 <div class="col-xl-5 col-lg-6">
-                    <budgetBlock  @emitSaveMoney="getSaveMoneyTotal" @emitLastSave="getLastSave" :propsIncomeTotal="incomeTotal" :propsSaveTotal="savePlanTotal" :propsInsuranceTotal="insuranceCost" :propsHouseCost="houseCost" :propsOtherPlanCost="otherPlanCost" :propsIncome="income" :propsGovInsuranceTotal="govInsuranceTotal"  />
+                    <budgetBlock  
+                        @emitSaveMoney="getSaveMoneyTotal" 
+                        @emitLastSave="getLastSave" 
+                        @emitLastInsurance="getLastInsurance"
+                        @emitLastHouseCost="getLastHouseCost"
+                        @emitLastOtherCost="getLastOtherCost"
+                        :propsIncomeTotal="incomeTotal" 
+                        :propsSaveTotal="savePlanTotal" 
+                        :propsInsuranceTotal="insuranceCost" 
+                        :propsHouseCost="houseCost" 
+                        :propsOtherPlanCost="otherPlanCost" 
+                        :propsIncome="income" 
+                        :propsGovInsuranceTotal="govInsuranceTotal"  />
                 </div>
                 <div class="col-xl-4 col-lg-6">
                     <planBlock :propsSaveMoney="saveTotal" :propsSaveBank="saveBank" :propsInvest="invest" />
                 </div>
             </div>
-            <p>{{ lastSave }}</p>
+            <hr />
+            <div>
+                <div>
+                    <p v-if="income > 0 & Math.trunc(lastSave) > 0"><img src="@/assets/images/star.png"> 存款規劃：還有 ${{ numberToMoney(lastSave) }} 可規劃唷！</p>
+                    <p v-if="income > 0 & Math.trunc(lastSave) < 0"><img src="@/assets/images/rating.png"> 存款規劃：多存了 ${{ numberToMoney(Math.abs(lastSave)) }} 很棒唷！</p>
+                    <p v-else-if="income > 0 & Math.trunc(lastSave) === 0"><img src="@/assets/images/diamond.png"> 存款規劃：完美分配！</p>
+                </div>
+                <div>
+                    <p v-if="income > 0 & Math.trunc(lastInsurance) > 0"><img src="@/assets/images/star.png"> 風險規劃：還有 ${{ numberToMoney(lastInsurance) }} 可規劃唷！</p>
+                    <p v-if="income > 0 & Math.trunc(lastInsurance) < 0"><img src="@/assets/images/rating.png"> 風險規劃：多規劃了 ${{ numberToMoney(Math.abs(lastInsurance)) }} 很棒唷！</p>
+                    <p v-else-if="income > 0 & Math.trunc(lastInsurance) === 0"><img src="@/assets/images/diamond.png"> 風險規劃：完美分配！</p>
+                </div>
+                <div>
+                    <p v-if="income > 0 & Math.trunc(lastHouseCost) > 0"><img src="@/assets/images/star.png"> 住的規劃：還有 ${{ numberToMoney(lastHouseCost) }} 可規劃唷！</p>
+                    <p v-if="income > 0 & Math.trunc(lastHouseCost) < 0"><img src="@/assets/images/warning.png"> 住的規劃：超出預算 ${{ numberToMoney(Math.abs(lastHouseCost)) }} ！</p>
+                    <p v-else-if="income > 0 & Math.trunc(lastHouseCost) === 0"><img src="@/assets/images/diamond.png"> 住的規劃：完美分配！</p>
+                </div>
+                <div>
+                    <p v-if="income > 0 & Math.trunc(lastOtherCost) > 0"><img src="@/assets/images/star.png"> 其他花費規劃：還有 ${{ numberToMoney(lastOtherCost) }} 可規劃唷！</p>
+                    <p v-if="income > 0 & Math.trunc(lastOtherCost) < 0"><img src="@/assets/images/warning.png"> 其他花費規劃：超出預算 ${{ numberToMoney(Math.abs(lastOtherCost)) }} ！</p>
+                    <p v-else-if="income > 0 & Math.trunc(lastOtherCost) === 0"><img src="@/assets/images/diamond.png"> 其他花費規劃：完美分配！</p>
+                </div>
+            </div>
         </div>
     </main>
 
@@ -54,6 +100,7 @@
     <!-- <a href="https://www.flaticon.com/free-icons/like" title="like icons">Like icons created by Freepik - Flaticon</a>
     <a href="https://www.flaticon.com/free-icons/diamond" title="diamond icons">Diamond icons created by Freepik - Flaticon</a>
     <a href="https://www.flaticon.com/free-icons/error" title="error icons">Error icons created by Vectors Market - Flaticon</a> -->
+    <!-- <a href="https://www.flaticon.com/free-icons/star" title="star icons">Star icons created by Freepik - Flaticon</a> -->
 </template>
 
 <script>
@@ -65,6 +112,7 @@
     import saveBlock from '@/components/saveBlock.vue'
     import insuranceBlock from '@/components/insuranceBlock.vue'
     import studentLoanBlock from '@/components/studentLoanBlock.vue'
+    import { numberToMoney } from '@/assets/js/numberToMoney';
 
     export default {
         name: 'App',
@@ -103,7 +151,16 @@
                 // 勞保與健保的組合
                 govInsuranceTotal: 0,
                 // 剩餘存款金額
-                lastSave: 0
+                lastSave: 0,
+                // 剩餘可規劃風險金額
+                lastInsurance: 0,
+                // 剩餘住的金額
+                lastHouseCost: 0,
+                // 剩餘其他金額
+                lastOtherCost: 0,
+
+                // public js
+                numberToMoney
             }
         },
         computed: {
@@ -153,11 +210,16 @@
                 this.govInsuranceTotal = val;
             },
             getLastSave(val) {
-                if (val > 0) {
-                    this.lastSave = val;
-                } else {
-                    this.lastSave= 0;
-                }
+                this.lastSave = val;
+            },
+            getLastInsurance(val) {
+                this.lastInsurance = val;
+            },
+            getLastHouseCost(val) {
+                this.lastHouseCost = val;
+            },
+            getLastOtherCost(val) {
+                this.lastOtherCost = val;
             }
         }
     };
@@ -183,5 +245,10 @@
                 margin: 10px;
             }
         }
+    }
+
+    img {
+        width: 25px;
+        margin-top: -7px;
     }
 </style>

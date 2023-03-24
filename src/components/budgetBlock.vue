@@ -1,7 +1,7 @@
 <template>
     <div id="budget" class="bag-block">
         <h4>預算</h4>
-        <p class="txt-center">使用本薪收入做分配百分比，勞健保歸入其他花費</p>
+        <p class="txt-center">使用本薪收入 ${{ numberToMoney(propsIncome) }} 做分配百分比，勞健保歸入其他花費</p>
         <hr />
         <div>
             <div class="income-item">
@@ -34,8 +34,8 @@
                         <p class="txt-center">${{ numberToMoney(propsSaveTotal) }}</p>
                     </div>
                     <div class="col-3">
-                        <p class="txt-center">${{ lastSave = numberToMoney(saveMoney - propsSaveTotal) }}</p>
-                        {{ $emit('emitLastSave', lastSave) }}
+                        {{ $emit('emitLastSave', lastSave = saveMoney - propsSaveTotal) }}
+                        <p class="txt-center">${{ numberToMoney(lastSave) }}</p>
                     </div>
                 </div>
             </div>
@@ -51,7 +51,8 @@
                         <p class="txt-center">${{ numberToMoney(propsInsuranceTotal) }}</p>
                     </div>
                     <div class="col-3">
-                        <p class="txt-center">${{ numberToMoney(risk - propsInsuranceTotal) }}</p>
+                        {{ $emit('emitLastInsurance', lastInsurance = risk - propsInsuranceTotal) }}
+                        <p class="txt-center">${{ numberToMoney(lastInsurance) }}</p>
                     </div>
                 </div>
             </div>
@@ -67,7 +68,8 @@
                         <p class="txt-center">${{ numberToMoney(propsHouseCost) }}</p>
                     </div>
                     <div class="col-3">
-                        <p class="txt-center">${{ numberToMoney(house - propsHouseCost) }}</p>
+                        {{ $emit('emitLastHouseCost', lastHouseCost = house - propsHouseCost) }}
+                        <p class="txt-center">${{ numberToMoney(lastHouseCost) }}</p>
                     </div>
                 </div>
             </div>
@@ -83,7 +85,8 @@
                         <p class="txt-center">${{ numberToMoney(propsOtherPlanCost + propsGovInsuranceTotal) }}</p>
                     </div>
                     <div class="col-3">
-                        <p class="txt-center">${{ numberToMoney(otherConsumption - propsOtherPlanCost - propsGovInsuranceTotal) }}</p>
+                        {{ $emit('emitLastOtherCost', lastOtherCost = otherConsumption - propsOtherPlanCost - propsGovInsuranceTotal) }}
+                        <p class="txt-center">${{ numberToMoney(lastOtherCost) }}</p>
                     </div>
                 </div>
             </div>
@@ -137,8 +140,6 @@
                 house: 0,
                 /// 其他
                 otherConsumption: 0,
-                // 存錢剩餘
-                lastSave: 0,
 
                 // public js
                 numberToMoney,
