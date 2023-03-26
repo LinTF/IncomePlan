@@ -89,6 +89,11 @@
                     <p v-if="income > 0 & Math.trunc(lastOtherCost) < 0"><img src="@/assets/images/warning.png"> 其他花費規劃：超出預算 ${{ numberToMoney(Math.abs(lastOtherCost)) }} ！</p>
                     <p v-else-if="income > 0 & Math.trunc(lastOtherCost) === 0"><img src="@/assets/images/diamond.png"> 其他花費規劃：完美分配！</p>
                 </div>
+                <div>
+                    <p v-if="income > 0 & planlastTotal() > 0"><img src="@/assets/images/star.png"> 總結：還有 ${{ numberToMoney(planlastTotal()) }} 可規劃唷！</p>
+                    <p v-if="income > 0 & planlastTotal() < 0"><img src="@/assets/images/warning.png"> 總結：超出預算 ${{ numberToMoney(Math.abs(planlastTotal())) }} ！</p>
+                    <p v-else-if="income > 0 & planlastTotal() === 0"><img src="@/assets/images/diamond.png"> 總結：完美分配！</p>
+                </div>
             </div>
         </div>
     </main>
@@ -113,6 +118,7 @@
     import insuranceBlock from '@/components/insuranceBlock.vue'
     import studentLoanBlock from '@/components/studentLoanBlock.vue'
     import { numberToMoney } from '@/assets/js/numberToMoney';
+    import { judgeEmptyVal } from '@/assets/js/judgeEmptyVal.js';
 
     export default {
         name: 'App',
@@ -220,8 +226,16 @@
             },
             getLastOtherCost(val) {
                 this.lastOtherCost = val;
+            },
+            planlastTotal() {
+                const lastSave = judgeEmptyVal(this.lastSave);
+                const lastInsurance = judgeEmptyVal(this.lastInsurance);
+                const lastHouseCost = judgeEmptyVal(this.lastHouseCost);
+                const lastOtherCost = judgeEmptyVal(this.lastOtherCost);
+
+                return parseInt(lastSave) + parseInt(lastInsurance) + parseInt(lastHouseCost) + parseInt(lastOtherCost)
             }
-        }
+        },
     };
 </script>
 
