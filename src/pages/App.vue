@@ -70,29 +70,74 @@
             <hr />
             <div>
                 <div>
-                    <p v-if="income > 0 & Math.trunc(lastSave) > 0"><img src="@/assets/images/star.png"> 存款規劃：還有 ${{ numberToMoney(lastSave) }} 可規劃唷！</p>
-                    <p v-if="income > 0 & Math.trunc(lastSave) < 0"><img src="@/assets/images/rating.png"> 存款規劃：多存了 ${{ numberToMoney(Math.abs(lastSave)) }} 很棒唷！</p>
-                    <p v-else-if="income > 0 & Math.trunc(lastSave) === 0"><img src="@/assets/images/diamond.png"> 存款規劃：完美分配！</p>
+                    <p v-if="income > 0 & Math.trunc(lastSave) > 0">
+                        <img src="@/assets/images/star.png"> 
+                        存款規劃：還有 ${{ numberToMoney(lastSave) }} 可規劃唷！
+                    </p>
+                    <p v-if="income > 0 & Math.trunc(lastSave) < 0">
+                        <img src="@/assets/images/rating.png"> 
+                        存款規劃：多存了 ${{ numberToMoney(Math.abs(lastSave)) }} 很棒唷！
+                    </p>
+                    <p v-else-if="income > 0 & Math.trunc(lastSave) === 0">
+                        <img src="@/assets/images/diamond.png"> 
+                        存款規劃：完美分配！
+                    </p>
                 </div>
                 <div>
-                    <p v-if="income > 0 & Math.trunc(lastInsurance) > 0"><img src="@/assets/images/star.png"> 風險規劃：還有 ${{ numberToMoney(lastInsurance) }} 可規劃唷！</p>
-                    <p v-if="income > 0 & Math.trunc(lastInsurance) < 0"><img src="@/assets/images/rating.png"> 風險規劃：多規劃了 ${{ numberToMoney(Math.abs(lastInsurance)) }} 很棒唷！</p>
-                    <p v-else-if="income > 0 & Math.trunc(lastInsurance) === 0"><img src="@/assets/images/diamond.png"> 風險規劃：完美分配！</p>
+                    <p v-if="income > 0 & Math.trunc(lastInsurance) > 0">
+                        <img src="@/assets/images/star.png"> 
+                        風險規劃：還有 ${{ numberToMoney(lastInsurance) }} 可規劃唷！
+                    </p>
+                    <p v-if="income > 0 & Math.trunc(lastInsurance) < 0">
+                        <img src="@/assets/images/rating.png"> 
+                        風險規劃：多規劃了 ${{ numberToMoney(Math.abs(lastInsurance)) }} 很棒唷！
+                    </p>
+                    <p v-else-if="income > 0 & Math.trunc(lastInsurance) === 0">
+                        <img src="@/assets/images/diamond.png"> 
+                        風險規劃：完美分配！
+                    </p>
                 </div>
                 <div>
-                    <p v-if="income > 0 & Math.trunc(lastHouseCost) > 0"><img src="@/assets/images/star.png"> 住的規劃：還有 ${{ numberToMoney(lastHouseCost) }} 可規劃唷！</p>
-                    <p v-if="income > 0 & Math.trunc(lastHouseCost) < 0"><img src="@/assets/images/warning.png"> 住的規劃：超出預算 ${{ numberToMoney(Math.abs(lastHouseCost)) }} ！</p>
-                    <p v-else-if="income > 0 & Math.trunc(lastHouseCost) === 0"><img src="@/assets/images/diamond.png"> 住的規劃：完美分配！</p>
+                    <p v-if="income > 0 & Math.trunc(lastHouseCost) > 0">
+                        <img src="@/assets/images/star.png"> 
+                        住的規劃：還有 ${{ numberToMoney(lastHouseCost) }} 可規劃唷！
+                    </p>
+                    <p v-if="income > 0 & Math.trunc(lastHouseCost) < 0">
+                        <img src="@/assets/images/warning.png"> 
+                        住的規劃：超出預算 ${{ numberToMoney(Math.abs(lastHouseCost)) }} ！
+                    </p>
+                    <p v-else-if="income > 0 & Math.trunc(lastHouseCost) === 0">
+                        <img src="@/assets/images/diamond.png"> 
+                        住的規劃：完美分配！
+                    </p>
                 </div>
                 <div>
-                    <p v-if="income > 0 & Math.trunc(lastOtherCost) > 0"><img src="@/assets/images/star.png"> 其他花費規劃：還有 ${{ numberToMoney(lastOtherCost) }} 可規劃唷！</p>
-                    <p v-if="income > 0 & Math.trunc(lastOtherCost) < 0"><img src="@/assets/images/warning.png"> 其他花費規劃：超出預算 ${{ numberToMoney(Math.abs(lastOtherCost)) }} ！</p>
-                    <p v-else-if="income > 0 & Math.trunc(lastOtherCost) === 0"><img src="@/assets/images/diamond.png"> 其他花費規劃：完美分配！</p>
+                    <p v-if="income > 0 & Math.trunc(lastOtherCost) > 0">
+                        <img src="@/assets/images/star.png"> 
+                        其他花費規劃：還有 ${{ numberToMoney(lastOtherCost) }} 可規劃唷！
+                    </p>
+                    <p v-if="income > 0 & Math.trunc(lastOtherCost) < 0">
+                        <img src="@/assets/images/warning.png"> 
+                        其他花費規劃：超出預算 ${{ numberToMoney(Math.abs(lastOtherCost)) }} ！
+                    </p>
+                    <p v-else-if="income > 0 & Math.trunc(lastOtherCost) === 0">
+                        <img src="@/assets/images/diamond.png"> 
+                        其他花費規劃：完美分配！
+                    </p>
                 </div>
                 <div>
-                    <p v-if="income > 0 & planlastTotal() > 0"><img src="@/assets/images/star.png"> 總結：還有 ${{ numberToMoney(planlastTotal()) }} 可規劃唷！</p>
-                    <p v-if="income > 0 & planlastTotal() < 0"><img src="@/assets/images/warning.png"> 總結：超出預算 ${{ numberToMoney(Math.abs(planlastTotal())) }} ！</p>
-                    <p v-else-if="income > 0 & planlastTotal() === 0"><img src="@/assets/images/diamond.png"> 總結：完美分配！</p>
+                    <p v-if="income > 0 & planlastTotal() > 0">
+                        <img src="@/assets/images/star.png"> 
+                        總結：還有 ${{ numberToMoney(planlastTotal()) }} 可規劃唷！
+                    </p>
+                    <p v-if="income > 0 & planlastTotal() < 0">
+                        <img src="@/assets/images/warning.png"> 
+                        總結：超出預算 ${{ numberToMoney(Math.abs(planlastTotal())) }} ！
+                    </p>
+                    <p v-else-if="income > 0 & planlastTotal() === 0">
+                        <img src="@/assets/images/diamond.png"> 
+                        總結：完美分配！
+                    </p>
                 </div>
             </div>
         </div>
