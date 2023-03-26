@@ -20,7 +20,7 @@
                         <span>本薪</span>
                     </div>
                     <div class="col-8">
-                        <input type="number" v-model="income" @keyup="total" min="0" />
+                        <input type="number" v-sync-directive="income" min="0" @keyup="total" @input="income = $event.target.value" />
                     </div>
                 </div>
             </div>
@@ -31,7 +31,7 @@
                         <span>勞保</span>
                     </div>
                     <div class="col-8">
-                        <input type="number" v-model="laborInsurance" @keyup="total" min="0" />
+                        <input type="number" v-sync-directive="laborInsurance" min="0" @keyup="total" @input="laborInsurance = $event.target.value" />
                     </div>
                 </div>
             </div>
@@ -41,7 +41,7 @@
                         <span>健保</span>
                     </div>
                     <div class="col-8">
-                        <input type="number" v-model="healthInsurance" @keyup="total" min="0" />
+                        <input type="number" v-sync-directive="healthInsurance" min="0" @keyup="total" @input="healthInsurance = $event.target.value"/>
                     </div>
                 </div>
             </div>
@@ -52,6 +52,22 @@
 <script>
     import { numberToMoney } from '@/assets/js/numberToMoney.js';
     import { judgeEmptyVal } from '@/assets/js/judgeEmptyVal.js';
+
+    const Sync = {
+        beforeMount(el, binding) {
+            el.value = binding.value;
+
+            el.addEventListener("focus", () => {   
+                el.value = '';
+            })
+
+            el.addEventListener("blur", () => {
+                if (el.value === '') {
+                    el.value = binding.value;
+                }
+            })
+        },
+    }
 
     export default {
         name: 'incomeBlock',
@@ -72,7 +88,7 @@
 
                 // public js
                 numberToMoney,
-                judgeEmptyVal
+                judgeEmptyVal,
             }
         },
         computed: {
@@ -88,6 +104,9 @@
                 this.$emit('emitIncome', parseInt(income));
                 this.$emit('emitGovInsuranceTotal', parseInt(laborInsurance) + parseInt(healthInsurance));
             },
+        },
+        directives: {
+            "sync-directive" : Sync
         }
     }
 
