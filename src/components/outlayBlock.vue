@@ -20,7 +20,7 @@
                         <span>生活費</span>
                     </div>
                     <div class="col-8">
-                        <input type="number" v-model="lifeCost" @keyup="outlay" min="0" />
+                        <input type="number" v-sync-directive="lifeCost" @keyup="outlay" min="0" @input="lifeCost = $event.target.value" />
                     </div>
                 </div>
             </div>
@@ -30,7 +30,7 @@
                         <span>孝親費</span>
                     </div>
                     <div class="col-8">
-                        <input type="number" v-model="familyCost" @keyup="outlay" min="0" />
+                        <input type="number" v-sync-directive="familyCost" @keyup="outlay" min="0" @input="familyCost = $event.target.value" />
                     </div>
                 </div>
             </div>
@@ -60,7 +60,7 @@
                         <span>電話費</span>
                     </div>
                     <div class="col-8">
-                        <input type="number" v-model="telephoneCost" @keyup="outlay" min="0" />
+                        <input type="number" v-sync-directive="telephoneCost" @keyup="outlay" min="0" @input="telephoneCost = $event.target.value" />
                     </div>
                 </div>
             </div>
@@ -70,7 +70,7 @@
                         <span>交通費</span>
                     </div>
                     <div class="col-8">
-                        <input type="number" v-model="transportationCost" @keyup="outlay" min="0" />
+                        <input type="number" v-sync-directive="transportationCost" @keyup="outlay" min="0" @input="transportationCost = $event.target.value" />
                     </div>
                 </div>
             </div>
@@ -80,7 +80,7 @@
                         <span>房貸</span>
                     </div>
                     <div class="col-8">
-                        <input type="number" v-model="houseCost" @keyup="outlay" min="0" />
+                        <input type="number" v-sync-directive="houseCost" @keyup="outlay" min="0" @input="houseCost = $event.target.value" />
                         {{ $emit('emitHouseCost', parseInt(judgeEmptyVal(houseCost))) }}
                     </div>
                 </div>
@@ -91,7 +91,7 @@
                         <span>其他花費</span>
                     </div>
                     <div class="col-8">
-                        <input type="number" v-model="otherCost" @keyup="outlay" min="0" />
+                        <input type="number" v-sync-directive="otherCost" @keyup="outlay" min="0" @input="otherCost = $event.target.value" />
                     </div>
                 </div>
             </div>
@@ -103,6 +103,25 @@
 <script>
     import { numberToMoney } from '@/assets/js/numberToMoney.js';
     import { judgeEmptyVal } from '@/assets/js/judgeEmptyVal.js';
+
+    const Sync = {
+        beforeMount(el, binding) {
+            el.value = binding.value;
+
+            let tmp;
+
+            el.addEventListener("focus", () => {
+                tmp = el.value;
+                el.value = '';
+            })
+
+            el.addEventListener("blur", () => {
+                if (el.value === '') {
+                    el.value = tmp;
+                }
+            })
+        },
+    }
 
     export default {
         name: "outlayBlock",
@@ -154,6 +173,9 @@
 
                 this.outlayTotal = parseInt(lifeCost) + parseInt(familyCost) + parseInt(telephoneCost) + parseInt(houseCost) + parseInt(otherCost) + parseInt(transportationCost);
             },
+        },
+        directives: {
+            "sync-directive": Sync
         }
     }
 </script>

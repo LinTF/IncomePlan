@@ -20,7 +20,7 @@
                         <span>壽險</span>
                     </div>
                     <div class="col-8">
-                        <input type="number" v-model="lifeInsurance" @keyup="total" min="0" />
+                        <input type="number" v-sync-directive="lifeInsurance" @keyup="total" min="0" @input="lifeInsurance = $event.target.value" />
                     </div>
                 </div>
             </div>
@@ -30,7 +30,7 @@
                         <span>產險</span>
                     </div>
                     <div class="col-8">
-                        <input type="number" v-model="propertyInsurance" @keyup="total" min="0" />
+                        <input type="number" v-sync-directive="propertyInsurance" @keyup="total" min="0" @input="propertyInsurance = $event.target.value" />
                     </div>
                 </div>
             </div>
@@ -41,6 +41,25 @@
 <script>
     import { numberToMoney } from '@/assets/js/numberToMoney.js';
     import { judgeEmptyVal } from '@/assets/js/judgeEmptyVal.js';
+
+    const Sync = {
+        beforeMount(el, binding) {
+            el.value = binding.value;
+
+            let tmp;
+
+            el.addEventListener("focus", () => {   
+                tmp = el.value;
+                el.value = '';
+            })
+
+            el.addEventListener("blur", () => {
+                if (el.value === '') {
+                    el.value = tmp;
+                }
+            })
+        },
+    }
 
     export default {
         name: 'Insurance',
@@ -62,6 +81,9 @@
 
                 this.insuranceTotal = parseInt(lifeInsurance) + parseInt(propertyInsurance);
             }
+        },
+        directives: {
+            "sync-directive": Sync
         }
     }
 </script>

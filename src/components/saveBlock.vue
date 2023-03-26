@@ -20,7 +20,7 @@
                         <span>活儲</span>
                     </div>
                     <div class="col-8">
-                        <input type="number" v-model="bankMoney" @keyup="saveAll" min="0" />
+                        <input type="number" v-sync-directive="bankMoney" @keyup="saveAll" min="0" @input="bankMoney = $event.target.value" />
                     </div>
                 </div>
             </div>
@@ -30,7 +30,7 @@
                         <span>基金</span>
                     </div>
                     <div class="col-8">
-                        <input type="number" v-model="foundation" @keyup="saveAll" min="0" />
+                        <input type="number" v-sync-directive="foundation" @keyup="saveAll" min="0" @input="foundation = $event.target.value" />
                     </div>
                 </div>
             </div>
@@ -41,7 +41,7 @@
                         <span>股票</span>
                     </div>
                     <div class="col-8">
-                        <input type="number" v-model="stock" @keyup="saveAll" min="0" />
+                        <input type="number" v-sync-directive="stock" @keyup="saveAll" min="0" @input="stock = $event.target.value" />
                     </div>
                 </div>
             </div>
@@ -51,7 +51,7 @@
                         <span>儲蓄險</span>
                     </div>
                     <div class="col-8">
-                        <input type="number" v-model="savings" @keyup="saveAll" min="0" />
+                        <input type="number" v-sync-directive="savings" @keyup="saveAll" min="0" @input="savings = $event.target.value" />
                     </div>
                 </div>
             </div>
@@ -61,7 +61,7 @@
                         <span>其他</span>
                     </div>
                     <div class="col-8">
-                        <input type="number" v-model="otherSave" @keyup="saveAll" min="0" />
+                        <input type="number" v-sync-directive="otherSave" @keyup="saveAll" min="0" @input="otherSave = $event.target.value" />
                     </div>
                 </div>
             </div>
@@ -75,6 +75,25 @@
 <script>
     import { numberToMoney } from '@/assets/js/numberToMoney.js';
     import { judgeEmptyVal } from '@/assets/js/judgeEmptyVal.js';
+
+    const Sync = {
+        beforeMount(el, binding) {
+            el.value = binding.value;
+
+            let tmp;
+
+            el.addEventListener("focus", () => {   
+                tmp = el.value;
+                el.value = '';
+            })
+
+            el.addEventListener("blur", () => {
+                if (el.value === '') {
+                    el.value = tmp;
+                }
+            })
+        },
+    }
 
     export default {
         name: "SaveItems",
@@ -110,6 +129,9 @@
                 this.saveTotal = parseInt(otherSave) + parseInt(savings) + parseInt(foundation) + parseInt(bankMoney) + parseInt(stock);
             }
         },
+        directives: {
+            "sync-directive": Sync
+        }
     }
 </script>
 

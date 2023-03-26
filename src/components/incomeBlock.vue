@@ -57,13 +57,16 @@
         beforeMount(el, binding) {
             el.value = binding.value;
 
+            let tmp;
+
             el.addEventListener("focus", () => {   
+                tmp = el.value;
                 el.value = '';
             })
 
             el.addEventListener("blur", () => {
                 if (el.value === '') {
-                    el.value = binding.value;
+                    el.value = tmp;
                 }
             })
         },
@@ -106,7 +109,7 @@
             },
         },
         directives: {
-            "sync-directive" : Sync
+            "sync-directive": Sync
         }
     }
 
