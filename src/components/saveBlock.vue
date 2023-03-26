@@ -17,10 +17,31 @@
             <div class="income-item">
                 <div class="row">
                     <div class="col-4 title">
-                        <span>保險</span>
+                        <span>活儲</span>
                     </div>
                     <div class="col-8">
-                        <input type="number" v-model="saveInsurance" @keyup="saveAll" min="0" />
+                        <input type="number" v-model="bankMoney" @keyup="saveAll" min="0" />
+                    </div>
+                </div>
+            </div>
+            <div class="income-item">
+                <div class="row">
+                    <div class="col-4 title">
+                        <span>基金</span>
+                    </div>
+                    <div class="col-8">
+                        <input type="number" v-model="foundation" @keyup="saveAll" min="0" />
+                    </div>
+                </div>
+            </div>
+            
+            <div class="income-item">
+                <div class="row">
+                    <div class="col-4 title">
+                        <span>股票</span>
+                    </div>
+                    <div class="col-8">
+                        <input type="number" v-model="stock" @keyup="saveAll" min="0" />
                     </div>
                 </div>
             </div>
@@ -37,26 +58,16 @@
             <div class="income-item">
                 <div class="row">
                     <div class="col-4 title">
-                        <span>基金</span>
+                        <span>其他</span>
                     </div>
                     <div class="col-8">
-                        <input type="number" v-model="foundation" @keyup="saveAll" min="0" />
-                    </div>
-                </div>
-            </div>
-            <div class="income-item">
-                <div class="row">
-                    <div class="col-4 title">
-                        <span>活儲</span>
-                    </div>
-                    <div class="col-8">
-                        <input type="number" v-model="bankMoney" @keyup="saveAll" min="0" />
+                        <input type="number" v-model="otherSave" @keyup="saveAll" min="0" />
                     </div>
                 </div>
             </div>
 
-            {{ $emit('emitSaveBank', parseInt(judgeEmptyVal(saveInsurance)) + parseInt(judgeEmptyVal(savings)) + parseInt(judgeEmptyVal(bankMoney))) }}
-            {{ $emit('emitInvest', parseInt(judgeEmptyVal(foundation))) }}
+            {{ $emit('emitSaveBank', parseInt(judgeEmptyVal(otherSave)) + parseInt(judgeEmptyVal(savings)) + parseInt(judgeEmptyVal(bankMoney))) }}
+            {{ $emit('emitInvest', parseInt(judgeEmptyVal(foundation)) + parseInt(judgeEmptyVal(stock))) }}
         </div>
     </div>
 </template>
@@ -73,13 +84,15 @@
                 // 總儲蓄
                 saveTotal: 0,
                 // 保險
-                saveInsurance: 0,
+                otherSave: 0,
                 // 儲蓄險
                 savings: 0,
                 // 基金
                 foundation: 0,
                 // 活儲
                 bankMoney: 0,
+                // 股票
+                stock: 0,
 
                 // public js
                 numberToMoney,
@@ -88,12 +101,13 @@
         },
         computed: {
             saveAll: function () {
-                const saveInsurance = judgeEmptyVal(this.saveInsurance);
+                const otherSave = judgeEmptyVal(this.otherSave);
                 const savings = judgeEmptyVal(this.savings);
                 const foundation = judgeEmptyVal(this.foundation);
                 const bankMoney = judgeEmptyVal(this.bankMoney);
+                const stock = judgeEmptyVal(this.stock);
 
-                this.saveTotal = parseInt(saveInsurance) + parseInt(savings) + parseInt(foundation) + parseInt(bankMoney);
+                this.saveTotal = parseInt(otherSave) + parseInt(savings) + parseInt(foundation) + parseInt(bankMoney) + parseInt(stock);
             }
         },
     }
