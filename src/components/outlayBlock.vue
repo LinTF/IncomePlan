@@ -190,8 +190,7 @@
 
                 // 其他預算的金額
                 this.$emit('emitOtherPlanCost', parseInt(this.otherPlanCost));
-                console.log(this.propsStudentLoans);
-
+                
                 return numberToMoney(this.outlayTotal + propsInsuranceTotal + propsStudentLoans);
             }
         },
