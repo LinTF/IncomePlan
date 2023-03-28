@@ -1,7 +1,7 @@
 <template>
     <div id="studen-loan" class="bag-block">
         <h4>學貸</h4>
-        <p class="txt-right">總支出 ${{ numberToMoney(loanTotal) }} {{ $emit('emitLoanTotal', loanTotal) }}</p>
+        <p class="txt-right">總支出 ${{ formatLoanTotal }}</p>
         <hr />
         <div>
             <div class="income-item">
@@ -96,14 +96,22 @@
                 isEmpty
             }
         },
-        computed: {
+        methods: {
             total() {
                 const highSchool = isEmpty(this.highSchool);
                 const university = isEmpty(this.university);
                 const master = isEmpty(this.master);
                 const doctor = isEmpty(this.doctor);
 
-                this.loanTotal = parseInt(highSchool) + parseInt(university) + parseInt(master) + parseInt(doctor)
+                this.loanTotal = parseInt(highSchool) + parseInt(university) + parseInt(master) + parseInt(doctor);
+
+                // 拋出學貸總金額
+                this.$emit('emitLoanTotal', this.loanTotal);
+            }
+        },
+        computed: {
+            formatLoanTotal() {
+                return numberToMoney(this.loanTotal);
             }
         },
         directives: {
