@@ -31,7 +31,7 @@
                         <span>勞保</span>
                     </div>
                     <div class="col-8">
-                        <input type="number" v-sync-directive="laborInsurance" min="0" @keyup="total" @input="laborInsurance = $event.target.value" />
+                        <input type="number" v-sync-directive="labourInsurance" min="0" @keyup="total" @input="labourInsurance = $event.target.value" />
                     </div>
                 </div>
             </div>
@@ -85,7 +85,7 @@
                 /// 本薪
                 income: 0,
                 /// 勞保
-                laborInsurance: 0,
+                labourInsurance: 0,
                 /// 健保
                 healthInsurance: 0,
 
@@ -97,15 +97,15 @@
         computed: {
             total() {
                 const income = isEmpty(this.income);
-                const laborInsurance = isEmpty(this.laborInsurance);
+                const labourInsurance = isEmpty(this.labourInsurance);
                 const healthInsurance = isEmpty(this.healthInsurance);
                 
-                this.incomeTotal = parseInt(income) - parseInt(laborInsurance) - parseInt(healthInsurance);
+                this.incomeTotal = parseInt(income) - parseInt(labourInsurance) - parseInt(healthInsurance);
 
                 // 拋出實際收入數值
                 this.$emit('emitIncomeTotal', parseInt(this.incomeTotal));
                 this.$emit('emitIncome', parseInt(income));
-                this.$emit('emitGovInsuranceTotal', parseInt(laborInsurance) + parseInt(healthInsurance));
+                this.$emit('emitGovInsuranceTotal', parseInt(labourInsurance) + parseInt(healthInsurance));
             },
         },
         directives: {
