@@ -85,6 +85,7 @@
                 labourInsurance: 0,
                 /// 健保
                 healthInsurance: 0,
+                testaaaa: 0,
 
                 // public js
                 numberToMoney,
