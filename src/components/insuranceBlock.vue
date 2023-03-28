@@ -40,9 +40,9 @@
 
 <script>
     import { numberToMoney } from '@/assets/js/numberToMoney.js';
-    import { judgeEmptyVal } from '@/assets/js/judgeEmptyVal.js';
+    import { isEmpty } from '@/assets/js/isEmpty.js';
 
-    const Sync = {
+    const InputSyncDirective = {
         beforeMount(el, binding) {
             el.value = binding.value;
 
@@ -71,19 +71,19 @@
 
                 // public js
                 numberToMoney,
-                judgeEmptyVal
+                isEmpty
             }
         },
         computed: {
             total() {
-                const lifeInsurance = judgeEmptyVal(this.lifeInsurance);
-                const propertyInsurance = judgeEmptyVal(this.propertyInsurance);
+                const lifeInsurance = isEmpty(this.lifeInsurance);
+                const propertyInsurance = isEmpty(this.propertyInsurance);
 
                 this.insuranceTotal = parseInt(lifeInsurance) + parseInt(propertyInsurance);
             }
         },
         directives: {
-            "sync-directive": Sync
+            "sync-directive": InputSyncDirective
         }
     }
 </script>

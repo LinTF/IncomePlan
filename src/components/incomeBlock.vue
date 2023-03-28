@@ -51,9 +51,9 @@
 
 <script>
     import { numberToMoney } from '@/assets/js/numberToMoney.js';
-    import { judgeEmptyVal } from '@/assets/js/judgeEmptyVal.js';
+    import { isEmpty } from '@/assets/js/isEmpty.js';
 
-    const Sync = {
+    const InputSyncDirective = {
         beforeMount(el, binding) {
             el.value = binding.value;
 
@@ -91,14 +91,14 @@
 
                 // public js
                 numberToMoney,
-                judgeEmptyVal,
+                isEmpty,
             }
         },
         computed: {
-            total: function () {
-                const income = judgeEmptyVal(this.income);
-                const laborInsurance = judgeEmptyVal(this.laborInsurance);
-                const healthInsurance = judgeEmptyVal(this.healthInsurance);
+            total() {
+                const income = isEmpty(this.income);
+                const laborInsurance = isEmpty(this.laborInsurance);
+                const healthInsurance = isEmpty(this.healthInsurance);
                 
                 this.incomeTotal = parseInt(income) - parseInt(laborInsurance) - parseInt(healthInsurance);
 
@@ -109,7 +109,7 @@
             },
         },
         directives: {
-            "sync-directive": Sync
+            "sync-directive": InputSyncDirective
         }
     }
 

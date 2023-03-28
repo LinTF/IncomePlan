@@ -81,7 +81,7 @@
                     </div>
                     <div class="col-8">
                         <input type="number" v-sync-directive="houseCost" @keyup="outlay" min="0" @input="houseCost = $event.target.value" />
-                        {{ $emit('emitHouseCost', parseInt(judgeEmptyVal(houseCost))) }}
+                        {{ $emit('emitHouseCost', parseInt(isEmpty(houseCost))) }}
                     </div>
                 </div>
             </div>
@@ -95,16 +95,16 @@
                     </div>
                 </div>
             </div>
-            {{ $emit('emitOtherPlanCost', otherPlanCost = parseInt(judgeEmptyVal(lifeCost)) + parseInt(judgeEmptyVal(familyCost)) + parseInt(judgeEmptyVal(telephoneCost)) + parseInt(judgeEmptyVal(transportationCost)) + parseInt(judgeEmptyVal(otherCost)) + parseInt(judgeEmptyVal(propsStudentLoans))) }}
+            {{ $emit('emitOtherPlanCost', otherPlanCost = parseInt(isEmpty(lifeCost)) + parseInt(isEmpty(familyCost)) + parseInt(isEmpty(telephoneCost)) + parseInt(isEmpty(transportationCost)) + parseInt(isEmpty(otherCost)) + parseInt(isEmpty(propsStudentLoans))) }}
         </div>
     </div>
 </template>
 
 <script>
     import { numberToMoney } from '@/assets/js/numberToMoney.js';
-    import { judgeEmptyVal } from '@/assets/js/judgeEmptyVal.js';
+    import { isEmpty } from '@/assets/js/isEmpty.js';
 
-    const Sync = {
+    const InputSyncDirective = {
         beforeMount(el, binding) {
             el.value = binding.value;
 
@@ -159,23 +159,23 @@
 
                 // public js
                 numberToMoney,
-                judgeEmptyVal
+                isEmpty
             }
         },
         computed: {
             outlay() {
-                const lifeCost = judgeEmptyVal(this.lifeCost);
-                const familyCost = judgeEmptyVal(this.familyCost);
-                const telephoneCost = judgeEmptyVal(this.telephoneCost);
-                const otherCost = judgeEmptyVal(this.otherCost);
-                const transportationCost = judgeEmptyVal(this.transportationCost);
-                const houseCost = judgeEmptyVal(this.houseCost);
+                const lifeCost = isEmpty(this.lifeCost);
+                const familyCost = isEmpty(this.familyCost);
+                const telephoneCost = isEmpty(this.telephoneCost);
+                const otherCost = isEmpty(this.otherCost);
+                const transportationCost = isEmpty(this.transportationCost);
+                const houseCost = isEmpty(this.houseCost);
 
                 this.outlayTotal = parseInt(lifeCost) + parseInt(familyCost) + parseInt(telephoneCost) + parseInt(houseCost) + parseInt(otherCost) + parseInt(transportationCost);
             },
         },
         directives: {
-            "sync-directive": Sync
+            "sync-directive": InputSyncDirective
         }
     }
 </script>

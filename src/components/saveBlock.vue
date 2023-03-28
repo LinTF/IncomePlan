@@ -66,17 +66,17 @@
                 </div>
             </div>
 
-            {{ $emit('emitSaveBank', parseInt(judgeEmptyVal(otherSave)) + parseInt(judgeEmptyVal(savings)) + parseInt(judgeEmptyVal(bankMoney))) }}
-            {{ $emit('emitInvest', parseInt(judgeEmptyVal(foundation)) + parseInt(judgeEmptyVal(stock))) }}
+            {{ $emit('emitSaveBank', parseInt(isEmpty(otherSave)) + parseInt(isEmpty(savings)) + parseInt(isEmpty(bankMoney))) }}
+            {{ $emit('emitInvest', parseInt(isEmpty(foundation)) + parseInt(isEmpty(stock))) }}
         </div>
     </div>
 </template>
 
 <script>
     import { numberToMoney } from '@/assets/js/numberToMoney.js';
-    import { judgeEmptyVal } from '@/assets/js/judgeEmptyVal.js';
+    import { isEmpty } from '@/assets/js/isEmpty.js';
 
-    const Sync = {
+    const InputSyncDirective = {
         beforeMount(el, binding) {
             el.value = binding.value;
 
@@ -115,22 +115,22 @@
 
                 // public js
                 numberToMoney,
-                judgeEmptyVal
+                isEmpty
             }
         },
         computed: {
             saveAll: function () {
-                const otherSave = judgeEmptyVal(this.otherSave);
-                const savings = judgeEmptyVal(this.savings);
-                const foundation = judgeEmptyVal(this.foundation);
-                const bankMoney = judgeEmptyVal(this.bankMoney);
-                const stock = judgeEmptyVal(this.stock);
+                const otherSave = isEmpty(this.otherSave);
+                const savings = isEmpty(this.savings);
+                const foundation = isEmpty(this.foundation);
+                const bankMoney = isEmpty(this.bankMoney);
+                const stock = isEmpty(this.stock);
 
                 this.saveTotal = parseInt(otherSave) + parseInt(savings) + parseInt(foundation) + parseInt(bankMoney) + parseInt(stock);
             }
         },
         directives: {
-            "sync-directive": Sync
+            "sync-directive": InputSyncDirective
         }
     }
 </script>

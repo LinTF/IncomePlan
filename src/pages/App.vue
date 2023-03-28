@@ -163,7 +163,7 @@
     import insuranceBlock from '@/components/insuranceBlock.vue'
     import studentLoanBlock from '@/components/studentLoanBlock.vue'
     import { numberToMoney } from '@/assets/js/numberToMoney';
-    import { judgeEmptyVal } from '@/assets/js/judgeEmptyVal.js';
+    import { isEmpty } from '@/assets/js/isEmpty.js';
 
     export default {
         name: 'App',
@@ -273,10 +273,10 @@
                 this.lastOtherCost = val;
             },
             planlastTotal() {
-                const lastSave = judgeEmptyVal(this.lastSave);
-                const lastInsurance = judgeEmptyVal(this.lastInsurance);
-                const lastHouseCost = judgeEmptyVal(this.lastHouseCost);
-                const lastOtherCost = judgeEmptyVal(this.lastOtherCost);
+                const lastSave = isEmpty(this.lastSave);
+                const lastInsurance = isEmpty(this.lastInsurance);
+                const lastHouseCost = isEmpty(this.lastHouseCost);
+                const lastOtherCost = isEmpty(this.lastOtherCost);
 
                 return parseInt(lastSave) + parseInt(lastInsurance) + parseInt(lastHouseCost) + parseInt(lastOtherCost)
             }
