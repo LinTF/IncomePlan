@@ -1,7 +1,7 @@
 <template>
     <div id="insurance-item" class="bag-block">
         <h4>保險支出</h4>
-        <p class="txt-right">總金額 ${{ numberToMoney(insuranceTotal) }} {{ $emit('emitInsuranceCost', parseInt(insuranceTotal)) }} </p>
+        <p class="txt-right">總金額 ${{ formatInsuranceTotal }}</p>
         <hr />
         <div>
             <div class="income-item">
@@ -74,12 +74,20 @@
                 isEmpty
             }
         },
-        computed: {
+        methods: {
             total() {
                 const lifeInsurance = isEmpty(this.lifeInsurance);
                 const propertyInsurance = isEmpty(this.propertyInsurance);
 
                 this.insuranceTotal = parseInt(lifeInsurance) + parseInt(propertyInsurance);
+
+                // 拋出保險總金額
+                this.$emit('emitInsuranceCost', parseInt(this.insuranceTotal));
+            }
+        },
+        computed: {
+            formatInsuranceTotal() {
+                return numberToMoney(this.insuranceTotal);
             }
         },
         directives: {
