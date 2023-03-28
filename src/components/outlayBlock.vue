@@ -1,7 +1,7 @@
 <template>
     <div id="outlay" class="bag-block">
         <h4>固定支出</h4>
-        <p class="txt-right">總支出 ${{ numberToMoney(outlayTotal + this.propsInsuranceTotal + this.propsStudentLoans) }}</p>
+        <p class="txt-right">總支出 ${{ formatOutlayTotal }}</p>
         <hr />
         <div>
             <div class="income-item">
@@ -81,7 +81,6 @@
                     </div>
                     <div class="col-8">
                         <input type="number" v-sync-directive="houseCost" @keyup="outlay" min="0" @input="houseCost = $event.target.value" />
-                        {{ $emit('emitHouseCost', parseInt(isEmpty(houseCost))) }}
                     </div>
                 </div>
             </div>
@@ -95,7 +94,6 @@
                     </div>
                 </div>
             </div>
-            {{ $emit('emitOtherPlanCost', otherPlanCost = parseInt(isEmpty(lifeCost)) + parseInt(isEmpty(familyCost)) + parseInt(isEmpty(telephoneCost)) + parseInt(isEmpty(transportationCost)) + parseInt(isEmpty(otherCost)) + parseInt(isEmpty(propsStudentLoans))) }}
         </div>
     </div>
 </template>
@@ -156,13 +154,12 @@
                 otherCost: 0,
                 /// 排除存款、保險、住宿，剩餘的費用
                 otherPlanCost: 0,
-
                 // public js
                 numberToMoney,
                 isEmpty
             }
         },
-        computed: {
+        methods: {
             outlay() {
                 const lifeCost = isEmpty(this.lifeCost);
                 const familyCost = isEmpty(this.familyCost);
@@ -171,8 +168,18 @@
                 const transportationCost = isEmpty(this.transportationCost);
                 const houseCost = isEmpty(this.houseCost);
 
+                // 計算全部金額
                 this.outlayTotal = parseInt(lifeCost) + parseInt(familyCost) + parseInt(telephoneCost) + parseInt(houseCost) + parseInt(otherCost) + parseInt(transportationCost);
+
+                // 掏出房貸與其他預算的金額
+                this.$emit('emitHouseCost', parseInt(houseCost));
+                this.$emit('emitOtherPlanCost', this.otherPlanCost = parseInt(lifeCost) + parseInt(familyCost) + parseInt(telephoneCost) + parseInt(transportationCost) + parseInt(otherCost) + parseInt( this.propsStudentLoans));
             },
+        },
+        computed: {
+            formatOutlayTotal() {
+                return numberToMoney(this.outlayTotal + this.propsInsuranceTotal + this.propsStudentLoans);
+            }
         },
         directives: {
             "sync-directive": InputSyncDirective
