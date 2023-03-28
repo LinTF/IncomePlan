@@ -1,7 +1,7 @@
 <template>
     <div id="save-item" class="bag-block">
         <h4>儲蓄/投資</h4>
-        <p class="txt-right">總儲蓄 ${{ numberToMoney(saveTotal) }} {{ $emit('emitSavePlanTotal', saveTotal) }}</p>
+        <p class="txt-right">總儲蓄 ${{ formatSaveTotal }}</p>
         <hr />
         <div>
             <div class="income-item">
@@ -65,9 +65,6 @@
                     </div>
                 </div>
             </div>
-
-            {{ $emit('emitSaveBank', parseInt(isEmpty(otherSave)) + parseInt(isEmpty(savings)) + parseInt(isEmpty(bankMoney))) }}
-            {{ $emit('emitInvest', parseInt(isEmpty(foundation)) + parseInt(isEmpty(stock))) }}
         </div>
     </div>
 </template>
@@ -118,8 +115,8 @@
                 isEmpty
             }
         },
-        computed: {
-            saveAll: function () {
+        methods: {
+            saveAll() {
                 const otherSave = isEmpty(this.otherSave);
                 const savings = isEmpty(this.savings);
                 const foundation = isEmpty(this.foundation);
@@ -127,6 +124,16 @@
                 const stock = isEmpty(this.stock);
 
                 this.saveTotal = parseInt(otherSave) + parseInt(savings) + parseInt(foundation) + parseInt(bankMoney) + parseInt(stock);
+
+                // 拋出存款總金額
+                this.$emit('emitSavePlanTotal', this.saveTotal);
+                this.$emit('emitSaveBank', parseInt(isEmpty(otherSave)) + parseInt(isEmpty(savings)) + parseInt(isEmpty(bankMoney)));
+                this.$emit('emitInvest', parseInt(isEmpty(foundation)) + parseInt(isEmpty(stock)));
+            }
+        },
+        computed: {
+            formatSaveTotal() {
+                return numberToMoney(this.saveTotal);
             }
         },
         directives: {
