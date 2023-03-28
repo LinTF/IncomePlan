@@ -1,7 +1,7 @@
 <template>
     <div id="income" class="bag-block">
         <h4>實際收入</h4>
-        <p class="txt-right">實領 ${{ numberToMoney(incomeTotal) }} </p>
+        <p class="txt-right">實領 ${{ formattedIncomeTotal }} </p>
         <hr />
         <div>
             <div class="income-item">
@@ -20,7 +20,7 @@
                         <span>本薪</span>
                     </div>
                     <div class="col-8">
-                        <input type="number" v-sync-directive="income" min="0" @keyup="total" @input="income = $event.target.value" />
+                        <input type="number" v-sync-directive="income" min="0" @keyup="updateIncomeTotal" @input="income = $event.target.value" />
                     </div>
                 </div>
             </div>
@@ -31,7 +31,7 @@
                         <span>勞保</span>
                     </div>
                     <div class="col-8">
-                        <input type="number" v-sync-directive="labourInsurance" min="0" @keyup="total" @input="labourInsurance = $event.target.value" />
+                        <input type="number" v-sync-directive="labourInsurance" min="0" @keyup="updateIncomeTotal" @input="labourInsurance = $event.target.value" />
                     </div>
                 </div>
             </div>
@@ -41,7 +41,7 @@
                         <span>健保</span>
                     </div>
                     <div class="col-8">
-                        <input type="number" v-sync-directive="healthInsurance" min="0" @keyup="total" @input="healthInsurance = $event.target.value"/>
+                        <input type="number" v-sync-directive="healthInsurance" min="0" @keyup="updateIncomeTotal" @input="healthInsurance = $event.target.value"/>
                     </div>
                 </div>
             </div>
@@ -74,9 +74,6 @@
 
     export default {
         name: 'incomeBlock',
-        components: {
-            
-        },
         data() {
             return {
                 // 收入
@@ -94,12 +91,13 @@
                 isEmpty,
             }
         },
-        computed: {
-            total() {
+        methods: {
+            updateIncomeTotal() {
                 const income = isEmpty(this.income);
                 const labourInsurance = isEmpty(this.labourInsurance);
                 const healthInsurance = isEmpty(this.healthInsurance);
                 
+                // 計算
                 this.incomeTotal = parseInt(income) - parseInt(labourInsurance) - parseInt(healthInsurance);
 
                 // 拋出實際收入數值
@@ -107,6 +105,11 @@
                 this.$emit('emitIncome', parseInt(income));
                 this.$emit('emitGovInsuranceTotal', parseInt(labourInsurance) + parseInt(healthInsurance));
             },
+        },
+        computed: {
+            formattedIncomeTotal() {
+                return numberToMoney(this.incomeTotal);
+            }
         },
         directives: {
             "sync-directive": InputSyncDirective
