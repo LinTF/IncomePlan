@@ -171,14 +171,28 @@
                 // 計算全部金額
                 this.outlayTotal = parseInt(lifeCost) + parseInt(familyCost) + parseInt(telephoneCost) + parseInt(houseCost) + parseInt(otherCost) + parseInt(transportationCost);
 
-                // 掏出房貸與其他預算的金額
+                // 拋出房貸
                 this.$emit('emitHouseCost', parseInt(houseCost));
-                this.$emit('emitOtherPlanCost', this.otherPlanCost = parseInt(lifeCost) + parseInt(familyCost) + parseInt(telephoneCost) + parseInt(transportationCost) + parseInt(otherCost) + parseInt( this.propsStudentLoans));
             },
         },
         computed: {
             formatOutlayTotal() {
-                return numberToMoney(this.outlayTotal + this.propsInsuranceTotal + this.propsStudentLoans);
+                const lifeCost = isEmpty(this.lifeCost);
+                const familyCost = isEmpty(this.familyCost);
+                const telephoneCost = isEmpty(this.telephoneCost);
+                const transportationCost = isEmpty(this.transportationCost);
+                const otherCost = isEmpty(this.otherCost);
+                const propsStudentLoans = isEmpty(this.propsStudentLoans);
+                const propsInsuranceTotal = isEmpty(this.propsInsuranceTotal);
+
+                // 計算屬於其他的金額
+                this.otherPlanCost = parseInt(lifeCost) + parseInt(familyCost) + parseInt(telephoneCost) + parseInt(transportationCost) + parseInt(otherCost) + parseInt(propsStudentLoans);
+
+                // 其他預算的金額
+                this.$emit('emitOtherPlanCost', parseInt(this.otherPlanCost));
+                console.log(this.propsStudentLoans);
+
+                return numberToMoney(this.outlayTotal + propsInsuranceTotal + propsStudentLoans);
             }
         },
         directives: {
