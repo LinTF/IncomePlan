@@ -9,7 +9,7 @@
         name: 'FooterBlock',
         data() {
             return {
-                copyright: '© 2023 Ting Fang Lin',
+                copyright: '© 2023 Ting Fang Lin @329',
             }
         }
     };
