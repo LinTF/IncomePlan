@@ -25,13 +25,13 @@
                         <p>儲蓄</p>
                     </div>
                     <div class="col-3">
-                        <p class="txt-center">${{ numberToMoney(saveBank = propsSaveMoney * 0.5) }}</p>
+                        <p class="txt-center">${{ getSaveBank }}</p>
                     </div>
                     <div class="col-3">
-                        <p class="txt-center">${{ numberToMoney(propsSaveBank) }}</p>
+                        <p class="txt-center">${{ formatPropsSaveBank }}</p>
                     </div>
                     <div class="col-3">
-                        <p class="txt-center">${{ numberToMoney(saveBank - propsSaveBank) }}</p>
+                        <p class="txt-center">${{ getLastSaveBank }}</p>
                     </div>
                 </div>
             </div>
@@ -41,13 +41,13 @@
                         <p>投資</p>
                     </div>
                     <div class="col-3">
-                        <p class="txt-center">${{ numberToMoney(investment = propsSaveMoney * 0.5) }}</p>
+                        <p class="txt-center">${{ getInvestment }}</p>
                     </div>
                     <div class="col-3">
-                        <p class="txt-center">${{ numberToMoney(propsInvest) }}</p>
+                        <p class="txt-center">${{ formatPropsInvest }}</p>
                     </div>
                     <div class="col-3">
-                        <p class="txt-center">${{ numberToMoney(investment - propsInvest) }}</p>
+                        <p class="txt-center">${{ getLastInvestment }}</p>
                     </div>
                 </div>
             </div>
@@ -84,6 +84,32 @@
 
                 // public js
                 numberToMoney,
+            }
+        },
+        computed: {
+            getSaveBank() {
+                const saveBank = this.propsSaveMoney * 0.5;
+                this.saveBank = saveBank;
+                return numberToMoney(saveBank);
+            },
+            formatPropsSaveBank() {
+                return numberToMoney(this.propsSaveBank);
+            },
+            getLastSaveBank() {
+                const lastSaveBank = this.saveBank - this.propsSaveBank;
+                return numberToMoney(lastSaveBank);
+            },
+            getInvestment() {
+                const investment = this.propsSaveMoney * 0.5;
+                this.investment = investment;
+                return numberToMoney(investment);
+            },
+            formatPropsInvest() {
+                return numberToMoney(this.propsInvest);
+            },
+            getLastInvestment() {
+                const lastInvestment = this.investment - this.propsInvest;
+                return numberToMoney(lastInvestment);
             }
         }
     }
